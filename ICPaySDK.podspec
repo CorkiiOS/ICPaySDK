@@ -35,7 +35,7 @@ s.dependency 'WechatOpenSDK'
 
 s.subspec 'ICPayManager' do |mgr|
 
-mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDK,BasePayFactory}.{h,m}'
+mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDK,BasePayFactory,IPay}.{h,m}'
 
 end
 
