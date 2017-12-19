@@ -32,7 +32,6 @@
 		66635EAAE52FF5571DBCDC626FB8CA86 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D752600F8BF86DC048000C276D4576D6 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		682B0E603612B6ADBCCF30580F9A4B09 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AA12F2683851655BCEC6FF261EF0F17 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B71CE5BA32574F407349C1DA20605B4 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 26548A7162820581ADC3D218467117D7 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DEDC5D33992B738455BBFF611536670 /* ICAliPayFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C08821D7E6DA19D6AA78BCE5A0AC7F6 /* ICAliPayFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6FB74EF6C099DA20AF1DB2C038F17EF3 /* ICIPay.h in Headers */ = {isa = PBXBuildFile; fileRef = 940DD2708423AE82C19AE613B1AB100A /* ICIPay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		707E818332E5033501DF2D7826C639DF /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A8C0FA1E90CE1F26870CFDE7748498E /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		776E6D35A58A0C150941C2713E816B91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F921D275AC6AA48C031BF91FD4592584 /* Foundation.framework */; };
@@ -43,7 +42,7 @@
 		A5198B46ADEAEED1FD43C3C9DBE2F8F4 /* ICError.m in Sources */ = {isa = PBXBuildFile; fileRef = CB110B8274D4D8B5BA00EE7F909574C2 /* ICError.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A814B1B3739F750BACD23D0678944CFC /* ICBasePayFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ED322625F67C15EDEF05F4DF802E86F /* ICBasePayFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A906A376A93C1C83BB89E8F63A663F43 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA34F0465050CD2A0480255282FEAEA /* AFAutoPurgingImageCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		AFFE54300F19269887CE0E50A8CB8F10 /* ICWxPayFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9C500D91BCA8AA4011A01DE54CE72 /* ICWxPayFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks -w -Xanalyzer -analyzer-disable-all-checks -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		ADA048F588BCAE17477E3C906759B0CA /* ICWxPayFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9C500D91BCA8AA4011A01DE54CE72 /* ICWxPayFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B40756412613B53C80EE77C4C223990F /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 526CA2F971A3633C5F0720DA18C02931 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B925F25D7B6A85DE249AFB668AB92A02 /* Pods-ICPaySDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA417855FE0EAAA721933CD85064200 /* Pods-ICPaySDK_Tests-dummy.m */; };
 		C1C0D7C93BF3DE14A26757273598D0FA /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 39A8D98F908F2AEA93FF7A2DAD33CCE5 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +54,7 @@
 		D59FC98A74E440C4725B6FDC28F5951E /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 535811DEACA32CE72226302ACEE467CD /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5CB999FB5FC80FC126A38AB4DF12227 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 386B6AE770D00F84D6C2436ECF7AABBE /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D62D0DE53E9AE1B149E03EE688A9FED0 /* ICIAliModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E89500257098A6425DCCEBF60DCE3E26 /* ICIAliModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC7C3EA88C4FF6EC57F7EA0C2B588AAE /* ICAliPayFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C08821D7E6DA19D6AA78BCE5A0AC7F6 /* ICAliPayFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DE31BBF6A7963C5871A19655EF5532BE /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EC4F3C58EA56D3C724B21DFEC8A8F0E /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE825B8F32AB823F4BE5492CAC6FCB4B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9374C39A6EFA90AD3F2E64799ECC5 /* Security.framework */; };
 		E01EED2802EE891ECAFEBBDEA6540675 /* ICPaySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8606DE9A885D8ED3D01F52477BC649F6 /* ICPaySDK-dummy.m */; };
@@ -672,13 +672,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DEDC5D33992B738455BBFF611536670 /* ICAliPayFactory.m in Sources */,
+				DC7C3EA88C4FF6EC57F7EA0C2B588AAE /* ICAliPayFactory.m in Sources */,
 				F5230E845CA6E9124B4872A4FDF09799 /* ICBasePayFactory.m in Sources */,
 				A5198B46ADEAEED1FD43C3C9DBE2F8F4 /* ICError.m in Sources */,
 				E36ED87D9BB1DB22F9075BAECB8D3AF0 /* ICMessageModel.m in Sources */,
 				646CDF732436A76F772F0E434F994669 /* ICPayDesignManager.m in Sources */,
 				E01EED2802EE891ECAFEBBDEA6540675 /* ICPaySDK-dummy.m in Sources */,
-				AFFE54300F19269887CE0E50A8CB8F10 /* ICWxPayFactory.m in Sources */,
+				ADA048F588BCAE17477E3C906759B0CA /* ICWxPayFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
