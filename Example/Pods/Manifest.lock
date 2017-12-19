@@ -1,0 +1,43 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AliPay_SDK (3.0.0)
+  - ICPaySDK (0.1.0):
+    - ICPaySDK/ICAliPay (= 0.1.0)
+    - ICPaySDK/ICWxPay (= 0.1.0)
+  - ICPaySDK/ICAliPay (0.1.0):
+    - AliPay_SDK
+  - ICPaySDK/ICWxPay (0.1.0):
+    - WechatOpenSDK
+  - WechatOpenSDK (1.8.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - ICPaySDK (from `../`)
+
+EXTERNAL SOURCES:
+  ICPaySDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AliPay_SDK: 5926c28409b4a4fa782cbb8222c8b1c0797e3725
+  ICPaySDK: 1ba7ed69730c34d0b40b7ceb7b8d905c6389ca21
+  WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
+
+PODFILE CHECKSUM: 4a3a991de6e95197c07238f8154d4b83e92c3164
+
+COCOAPODS: 1.2.1

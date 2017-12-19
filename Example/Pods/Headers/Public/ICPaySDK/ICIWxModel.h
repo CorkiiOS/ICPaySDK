@@ -1,0 +1,1 @@
+../../../../../ICPaySDK/Classes/IModel/ICIWxModel.h

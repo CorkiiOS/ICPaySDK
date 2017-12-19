@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20846BAC09CA2B54AD5DEA9E /* Pods_ICPaySDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE71AA9E2AC0FAB36CA1F60C /* Pods_ICPaySDK_Tests.framework */; };
+		04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65C1FE8E93B0079711F /* ApiXml.m */; };
+		04FBC6621FE8E93B0079711F /* payRequsestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */; };
+		04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6601FE8E93B0079711F /* WXUtil.m */; };
+		04FBC6681FE8E9590079711F /* AliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6641FE8E9580079711F /* AliModel.m */; };
+		04FBC6691FE8E9590079711F /* WxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6651FE8E9590079711F /* WxModel.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,9 +25,10 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6B51E7447E587175813A4675 /* libPods-ICPaySDK_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AB663C6365BF8AFC174DB5C /* libPods-ICPaySDK_Example.a */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		F8B0B9EB8A2F17CA37F247B0 /* Pods_ICPaySDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC10A1C1DE78202DD2FE1AE /* Pods_ICPaySDK_Example.framework */; };
+		AC730F2B77B305D20F63D4A5 /* libPods-ICPaySDK_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1035F6ED96829435722AFC0D /* libPods-ICPaySDK_Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +42,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		298A64B28146A5605CBB4259 /* ICPaySDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ICPaySDK.podspec; path = ../ICPaySDK.podspec; sourceTree = "<group>"; };
+		04FBC65B1FE8E93B0079711F /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
+		04FBC65C1FE8E93B0079711F /* ApiXml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiXml.m; sourceTree = "<group>"; };
+		04FBC65D1FE8E93B0079711F /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
+		04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payRequsestHandler.m; sourceTree = "<group>"; };
+		04FBC65F1FE8E93B0079711F /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
+		04FBC6601FE8E93B0079711F /* WXUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUtil.m; sourceTree = "<group>"; };
+		04FBC6641FE8E9580079711F /* AliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliModel.m; sourceTree = "<group>"; };
+		04FBC6651FE8E9590079711F /* WxModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WxModel.m; sourceTree = "<group>"; };
+		04FBC6661FE8E9590079711F /* AliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliModel.h; sourceTree = "<group>"; };
+		04FBC6671FE8E9590079711F /* WxModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxModel.h; sourceTree = "<group>"; };
+		1035F6ED96829435722AFC0D /* libPods-ICPaySDK_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ICPaySDK_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		298A64B28146A5605CBB4259 /* ICPaySDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ICPaySDK.podspec; path = ../ICPaySDK.podspec; sourceTree = "<group>"; };
 		4B78A810DF6B70EF614E40F1 /* Pods-ICPaySDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICPaySDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ICPaySDK_Tests/Pods-ICPaySDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		52E2A760ECE509D281AD4F75 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		52E2A760ECE509D281AD4F75 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ICPaySDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICPaySDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,11 +78,10 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85019E0DD0D32D21DACE1972 /* Pods-ICPaySDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICPaySDK_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ICPaySDK_Example/Pods-ICPaySDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE71AA9E2AC0FAB36CA1F60C /* Pods_ICPaySDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ICPaySDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AB663C6365BF8AFC174DB5C /* libPods-ICPaySDK_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ICPaySDK_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9D53A3C522A6EB5642D65F /* Pods-ICPaySDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICPaySDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ICPaySDK_Tests/Pods-ICPaySDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CCC10A1C1DE78202DD2FE1AE /* Pods_ICPaySDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ICPaySDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E895E2F22528B489E2D036 /* Pods-ICPaySDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICPaySDK_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ICPaySDK_Example/Pods-ICPaySDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DCC5766964A966535742341A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		DCC5766964A966535742341A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +92,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				F8B0B9EB8A2F17CA37F247B0 /* Pods_ICPaySDK_Example.framework in Frameworks */,
+				6B51E7447E587175813A4675 /* libPods-ICPaySDK_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,13 +103,26 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				20846BAC09CA2B54AD5DEA9E /* Pods_ICPaySDK_Tests.framework in Frameworks */,
+				AC730F2B77B305D20F63D4A5 /* libPods-ICPaySDK_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FBC65A1FE8E93B0079711F /* WXPay */ = {
+			isa = PBXGroup;
+			children = (
+				04FBC65B1FE8E93B0079711F /* ApiXml.h */,
+				04FBC65C1FE8E93B0079711F /* ApiXml.m */,
+				04FBC65D1FE8E93B0079711F /* payRequsestHandler.h */,
+				04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */,
+				04FBC65F1FE8E93B0079711F /* WXUtil.h */,
+				04FBC6601FE8E93B0079711F /* WXUtil.m */,
+			);
+			path = WXPay;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +151,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				CCC10A1C1DE78202DD2FE1AE /* Pods_ICPaySDK_Example.framework */,
-				BE71AA9E2AC0FAB36CA1F60C /* Pods_ICPaySDK_Tests.framework */,
+				8AB663C6365BF8AFC174DB5C /* libPods-ICPaySDK_Example.a */,
+				1035F6ED96829435722AFC0D /* libPods-ICPaySDK_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +160,11 @@
 		6003F593195388D20070C39A /* Example for ICPaySDK */ = {
 			isa = PBXGroup;
 			children = (
+				04FBC6661FE8E9590079711F /* AliModel.h */,
+				04FBC6641FE8E9580079711F /* AliModel.m */,
+				04FBC6671FE8E9590079711F /* WxModel.h */,
+				04FBC6651FE8E9590079711F /* WxModel.m */,
+				04FBC65A1FE8E93B0079711F /* WXPay */,
 				6003F59C195388D20070C39A /* ICAppDelegate.h */,
 				6003F59D195388D20070C39A /* ICAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -250,6 +283,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = corkiios;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = K726HQ828M;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -394,9 +430,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FBC6681FE8E9590079711F /* AliModel.m in Sources */,
+				04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */,
+				04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */,
 				6003F59E195388D20070C39A /* ICAppDelegate.m in Sources */,
+				04FBC6691FE8E9590079711F /* WxModel.m in Sources */,
 				6003F5A7195388D20070C39A /* ICViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				04FBC6621FE8E93B0079711F /* payRequsestHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +565,7 @@
 			baseConfigurationReference = 85019E0DD0D32D21DACE1972 /* Pods-ICPaySDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K726HQ828M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";
@@ -539,6 +581,7 @@
 			baseConfigurationReference = D6E895E2F22528B489E2D036 /* Pods-ICPaySDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K726HQ828M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";

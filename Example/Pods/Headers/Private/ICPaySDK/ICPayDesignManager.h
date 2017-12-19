@@ -1,0 +1,1 @@
+../../../../../ICPaySDK/Classes/ICPayDesignManager.h

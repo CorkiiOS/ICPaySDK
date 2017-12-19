@@ -1,0 +1,1 @@
+../../../../../ICPaySDK/Classes/ICPay/Imp/ICWxPayFactory.h
