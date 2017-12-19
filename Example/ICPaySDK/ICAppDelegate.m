@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"wx1cd2880e51ed36e9"} messageBlock:^(ICMessageModel *message) {
+    [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付的APPId,如果不使用微信支付可以忽略"} messageBlock:^(ICMessageModel *message) {
         message.cancel = @"取消";
     }];
     

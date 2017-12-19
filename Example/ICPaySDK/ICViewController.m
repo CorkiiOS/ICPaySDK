@@ -24,11 +24,11 @@
 }
 
 - (void)requestPaySignCompletion:(void(^)(NSDictionary *wechat, NSString *orderString))completion {
-    NSString *URLString = @"http://47.93.46.52:8765/api/v1/PayYiQuan";
+    NSString *URLString = @"";
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
     params[@"count"] = @(1);
     params[@"typeId"] = @(1);
-    params[@"token"] = @"cf5dk4aA0GtxfnFes0rKYYnKOSfFKMU3d8qyF7VhNhbKOcpdU132XShdUyv2N8p3yiMX3rOKFso5FHfKTMG-Fso5J3fK3iMWs1cXOxZ1yjnKxcXFxcXFxcUexcXFxR7FxcXFHsXFxcUexcXFxcXFxcXFxcXFyrg";
+    params[@"token"] = @"cf5dssss";
     [[AFHTTPSessionManager manager] POST:URLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable data) {
         if ([[data objectForKey:@"status"] integerValue] == 200) {
             
