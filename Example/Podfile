@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ICPaySDK_Example' do
+  pod 'ICPaySDK', :path => '../'
+
+  target 'ICPaySDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
