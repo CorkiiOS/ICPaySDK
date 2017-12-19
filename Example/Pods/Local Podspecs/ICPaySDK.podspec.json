@@ -1,9 +1,9 @@
 {
   "name": "ICPaySDK",
   "version": "0.1.0",
-  "summary": "A short description of ICPaySDK.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/corkiios/ICPaySDK",
+  "summary": "ICPaySDK is an unique sdk to pay",
+  "description": "ICPaySDK = wxpay + alipay. the api is unique",
+  "homepage": "https://github.com/CorkiiOS/ICPaySDK",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,33 +12,39 @@
     "corkiios": "675053587@qq.com"
   },
   "source": {
-    "git": "https://github.com/corkiios/ICPaySDK.git",
+    "git": "https://github.com/CorkiiOS/ICPaySDK.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
   "source_files": "ICPaySDK/Classes/**/*",
+  "dependencies": {
+    "AliPay_SDK": [
+
+    ],
+    "WechatOpenSDK": [
+
+    ]
+  },
   "subspecs": [
     {
       "name": "ICAliPay",
-      "source_files": "ICPaySDK/Classes/ICPay/ICAliPayFactory.{h,m}",
-      "frameworks": "Security",
       "dependencies": {
         "AliPay_SDK": [
 
         ]
-      }
+      },
+      "source_files": "ICPaySDK/Classes/ICPay/Imp/ICAliPayFactory.{h,m}"
     },
     {
       "name": "ICWxPay",
-      "source_files": "ICPaySDK/Classes/ICPay/ICWxPayFactory.{h,m}",
-      "frameworks": "Security",
       "dependencies": {
         "WechatOpenSDK": [
 
         ]
-      }
+      },
+      "source_files": "ICPaySDK/Classes/ICPay/Imp/ICWxPayFactory.{h,m}"
     }
   ]
 }

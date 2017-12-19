@@ -7,8 +7,7 @@
 //
 
 #import "ICBasePayFactory.h"
-#import "ICIPay.h"
-@interface ICWxPayFactory : ICBasePayFactory<ICIPay>
+@interface ICWxPayFactory : ICBasePayFactory
 
 - (instancetype)initWithMessage:(ICMessageModel *)message appId:(NSString *)appId;
 

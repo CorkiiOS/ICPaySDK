@@ -1,28 +1,27 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ICPaySDK'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ICPaySDK.'
+  s.version          = '1.0.0'
+  s.summary          = 'ICPaySDK is an unique sdk to pay'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.description  = "ICPaySDK = wxpay + alipay. the api is unique"
 
-  s.description      = "ICPaySDK = wxpay + alipay. the api is unique"
 
-  s.homepage         = 'https://github.com/corkiios/ICPaySDK'
+  s.homepage         = 'https://github.com/CorkiiOS/ICPaySDK'
+
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'corkiios' => '675053587@qq.com' }
-  s.source           = { :git => 'https://github.com/corkiios/ICPaySDK.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/CorkiiOS/ICPaySDK.git', :tag => s.version.to_s }
+
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'ICPaySDK/Classes/**/*'
-  
+
+
   # s.resource_bundles = {
   #   'ICPaySDK' => ['ICPaySDK/Assets/*.png']
   # }
@@ -30,19 +29,30 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
 
-s.subspec 'ICAliPay' do |ss|
-ss.source_files = 'ICPaySDK/Classes/ICPay/ICAliPayFactory.{h,m}'
-ss.frameworks = 'Security'
-ss.dependency 'AliPay_SDK'
+s.dependency 'AliPay_SDK'
+s.dependency 'WechatOpenSDK'
+
+
+s.subspec 'ICPayManager' do |mgr|
+
+mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDK,BasePayFactory}.{h,m}'
 
 end
 
-s.subspec 'ICWxPay' do |ss|
-ss.source_files = 'ICPaySDK/Classes/ICPay/ICWxPayFactory.{h,m}'
-ss.frameworks = 'Security'
-ss.dependency 'WechatOpenSDK'
+s.subspec 'ICAliPay' do |ali|
+
+ali.dependency 'ICPaySDK/ICPayManager'
+ali.dependency 'AliPay_SDK'
+ali.source_files = 'ICPaySDK/Classes/ICWxPayFactory.{h,m}'
 
 end
 
+s.subspec 'ICWxPay' do |wx|
+
+wx.dependency 'ICPaySDK/ICPayManager'
+wx.dependency 'WechatOpenSDK'
+wx.source_files = 'ICPaySDK/Classes/ICWxPayFactory.{h,m}'
+
+end
 
 end

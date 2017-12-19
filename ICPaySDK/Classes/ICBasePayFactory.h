@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ICIPay.h"
 
 @class ICMessageModel;
 
-@interface ICBasePayFactory : NSObject
+@interface ICBasePayFactory : NSObject<ICIPay>
 
 @property (nonatomic, strong) ICMessageModel *message;
 

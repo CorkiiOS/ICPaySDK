@@ -16,11 +16,15 @@ PODS:
     - AFNetworking/NSURLSession
   - AliPay_SDK (3.0.0)
   - ICPaySDK (0.1.0):
+    - AliPay_SDK
     - ICPaySDK/ICAliPay (= 0.1.0)
     - ICPaySDK/ICWxPay (= 0.1.0)
+    - WechatOpenSDK
   - ICPaySDK/ICAliPay (0.1.0):
     - AliPay_SDK
+    - WechatOpenSDK
   - ICPaySDK/ICWxPay (0.1.0):
+    - AliPay_SDK
     - WechatOpenSDK
   - WechatOpenSDK (1.8.0)
 
@@ -35,9 +39,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AliPay_SDK: 5926c28409b4a4fa782cbb8222c8b1c0797e3725
-  ICPaySDK: 1ba7ed69730c34d0b40b7ceb7b8d905c6389ca21
+  ICPaySDK: 481bdecc8e5b8614b86c4c17512f79a5001c25ba
   WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
 
-PODFILE CHECKSUM: 4a3a991de6e95197c07238f8154d4b83e92c3164
+PODFILE CHECKSUM: 07874ce38aa6ef86cb27dc1fa6b71fcf34d7e2d4
 
 COCOAPODS: 1.2.1

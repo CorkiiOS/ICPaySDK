@@ -7,7 +7,6 @@
 //
 
 #import "ICBasePayFactory.h"
-#import "ICIPay.h"
-@interface ICAliPayFactory : ICBasePayFactory<ICIPay>
+@interface ICAliPayFactory : ICBasePayFactory
 
 @end

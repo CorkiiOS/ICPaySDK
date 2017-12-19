@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/IModel/ICIAliModel.h
+../../../../../ICPaySDK/Classes/ICIAliModel.h
