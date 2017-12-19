@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class ICMessageModel;
 
-@interface ICBasePayFactory : NSObject<ICIPay>
+@interface ICBasePayFactory : NSObject
 
 @property (nonatomic, strong, nullable) ICMessageModel *message;
 
