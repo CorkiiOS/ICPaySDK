@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ICPaySDKCommon.h"
+#import "ICMessageModel.h"
+#import "ICIAliModel.h"
+#import "ICIWxModel.h"
+#import "ICError.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

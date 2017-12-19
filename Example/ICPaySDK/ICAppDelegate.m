@@ -7,7 +7,7 @@
 //
 
 #import "ICAppDelegate.h"
-#import <ICPaySDK.h>
+#import <ICPayDesignManager.h>
 
 @implementation ICAppDelegate
 

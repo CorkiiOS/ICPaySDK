@@ -7,10 +7,6 @@
 //
 
 #import "ICPayDesignManager.h"
-#import "ICMessageModel.h"
-#import "ICIWxModel.h"
-#import "ICIAliModel.h"
-#import "ICError.h"
 #import "ICIPay.h"
 
 #import <objc/message.h>

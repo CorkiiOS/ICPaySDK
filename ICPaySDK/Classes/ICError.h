@@ -12,7 +12,6 @@
 #import "ICPaySDKCommon.h"
 @class ICMessageModel;
 
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ICError : NSObject
