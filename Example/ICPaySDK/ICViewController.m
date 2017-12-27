@@ -10,7 +10,12 @@
 #import <ICPayDesignManager.h>
 #import "AliModel.h"
 #import "WxModel.h"
+#import "UnionModel.h"
 #import <AFNetworking.h>
+
+#define kURL_TN_Normal   @"http://101.231.204.84:8091/sim/getacptn"
+
+
 @interface ICViewController ()
 
 @end
@@ -20,6 +25,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*
+     <key>LSApplicationQueriesSchemes</key>
+     <array>
+     <string>alipay</string>
+     <string>alipayshare</string>
+     <string>uppaysdk</string>
+     <string>uppaywallet</string>
+     <string>uppayx1</string>
+     <string>uppayx2</string>
+     <string>uppayx3</string>
+     <string>wechat</string>
+     <string>weixin</string>
+     </array>
+     白名单
+
+     URLType 自行配置
+     
+     本Demo 银联的可以正常使用  其他支付方式 需要自己的后台返回 支付所需要的参数
+     创建对应的模型 遵守对应的协议 实现 一行代码完成支付
+     
+     
+     */
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -43,6 +70,26 @@
     }];
 }
 
+- (IBAction)unionPay:(id)sender {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer = serializer;
+    
+    [manager POST:kURL_TN_Normal parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable data) {
+        
+        NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
+        UnionModel *model = [UnionModel new];
+        model.tn = tn;
+        [[ICPayDesignManager shareInstance] payWithModel:model controller:self completion:^(ICError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+        }];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+   
+}
 
 - (IBAction)ali:(id)sender {
     [self requestPaySignCompletion:^(NSDictionary *wechat, NSString *orderString) {

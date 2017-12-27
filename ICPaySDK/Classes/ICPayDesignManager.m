@@ -55,23 +55,27 @@
     }
     NSString *appid = dictionary[ICWxPayChannelKey];
 
-    id aliCls = [NSClassFromString(@"ICAliPayFactory") new];
-    id wxiCls = [NSClassFromString(@"ICWxPayFactory") new];
-    
-    if (wxiCls) {
-        ((void(*)(id,SEL, id,id))objc_msgSend)(wxiCls, @selector(initWithMessage:appId:), model, appid);
-        [self.channelMap setValue:wxiCls forKey:ICWxPayChannelKey];
-        
-        return;
-    }
-    
-    if (aliCls) {
-        ((void(*)(id,SEL, id))objc_msgSend)(aliCls, @selector(initWithMessage:), model);
-        [self.channelMap setValue:aliCls forKey:ICALiPayChannelKey];
-        
-        return;
-    }
+    id aliIns = [NSClassFromString(@"ICAliPayFactory") new];
+    id wxiIns = [NSClassFromString(@"ICWxPayFactory") new];
+    id unionIns = [NSClassFromString(@"ICUnionpayFactory") new];
+
     self.model = model;
+
+    if (wxiIns) {
+        ((void(*)(id,SEL, id))objc_msgSend)(wxiIns, @selector(setMessage:), model);
+        ((void(*)(id,SEL, id))objc_msgSend)(wxiIns, @selector(setAppId:), appid);
+        [self.channelMap setValue:wxiIns forKey:ICWxPayChannelKey];
+    }
+    
+    if (aliIns) {
+        ((void(*)(id,SEL, id))objc_msgSend)(aliIns, @selector(setMessage:), model);
+        [self.channelMap setValue:aliIns forKey:ICALiPayChannelKey];
+    }
+    
+    if (unionIns) {
+        ((void(*)(id,SEL, id))objc_msgSend)(unionIns, @selector(setMessage:), model);
+        [self.channelMap setValue:unionIns forKey:ICUnionPayChannelKey];
+    }
 }
 
 /**
@@ -89,6 +93,10 @@
     
     if ([model conformsToProtocol:@protocol(ICIAliModel)]) {
         self.channel = ICALiPayChannelKey;
+    }
+    
+    if ([model conformsToProtocol:@protocol(ICIUnionpayModel)]) {
+        self.channel = ICUnionPayChannelKey;
     }
     
     id<ICIPay> pay = self.channelMap[self.channel];

@@ -19,15 +19,18 @@
 
 @implementation ICWxPayFactory
 
-- (instancetype)initWithMessage:(ICMessageModel *)message appId:(NSString *)appId {
-    self = [super initWithMessage:message];
-    if (self) {
-        if (appId) {
-            [WXApi registerApp:appId];
+- (void)setAppId:(NSString *)appId {
+    _appId = appId;
+    if (appId) {
+        BOOL isSuccess = [WXApi registerApp:appId];
+        if (isSuccess) {
+            NSLog(@"wechatPay sdk register success");
+        }else {
+            NSLog(@"wechatPay sdk register failure");
         }
     }
-    return self;
 }
+
 /**
  微信支付实现
  */

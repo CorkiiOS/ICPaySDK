@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ICWxPayFactory : ICBasePayFactory
 
-- (instancetype)initWithMessage:(ICMessageModel *)message appId:(nullable NSString *)appId;
+@property (nonatomic, strong) NSString *appId;
 
 @end
 

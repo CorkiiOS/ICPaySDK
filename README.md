@@ -63,6 +63,27 @@ completion:^(ICError *error) {
 }];
 
 ```
+*银联支付
+
+```
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
+manager.responseSerializer = serializer;
+
+[manager POST:kURL_TN_Normal parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable data) {
+
+NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
+UnionModel *model = [UnionModel new];
+model.tn = tn; //开发模式
+[[ICPayDesignManager shareInstance] payWithModel:model controller:self completion:^(ICError *error) {
+[[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+}];
+
+} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+}];
+
+```
 
 * 使用子模块
 
@@ -86,6 +107,8 @@ pod 'ICPaySDK'
 ## Author
 
 iCorki, 675053587@qq.com
+发现问题或者bug 👏指正！
+
 
 ## License
 

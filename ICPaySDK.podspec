@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ICPaySDK'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = 'ICPaySDK is an unique sdk to pay'
 
   s.description  = "ICPaySDK = wxpay + alipay. the api is unique"
@@ -48,6 +48,14 @@ s.subspec 'ICWxPay' do |wx|
 wx.dependency 'ICPaySDK/ICPayManager'
 wx.dependency 'WechatOpenSDK'
 wx.source_files = 'ICPaySDK/Classes/ICWxPayFactory.{h,m}'
+
+end
+
+s.subspec 'UnionPay' do |un|
+
+un.dependency 'ICPaySDK/ICPayManager'
+un.dependency 'UnionPay_SDK_iOS'
+un.source_files = 'ICPaySDK/Classes/ICUnionpayFactory.{h,m}'
 
 end
 

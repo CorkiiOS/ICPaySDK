@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) ICMessageModel *message;
 
-- (instancetype)initWithMessage:(nullable ICMessageModel *)message;
-
 @end
 
 NS_ASSUME_NONNULL_END

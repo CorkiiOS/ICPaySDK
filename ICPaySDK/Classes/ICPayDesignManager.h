@@ -12,7 +12,7 @@
 #import "ICIAliModel.h"
 #import "ICIWxModel.h"
 #import "ICError.h"
-
+#import "ICIUnionpayModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class ICMessageModel;

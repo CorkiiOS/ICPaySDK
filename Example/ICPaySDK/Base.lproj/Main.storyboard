@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,23 +22,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-Z4-Roh">
-                                <rect key="frame" x="172.5" y="318.5" width="31" height="30"/>
+                                <rect key="frame" x="172" y="318.5" width="31" height="30"/>
                                 <state key="normal" title="微信"/>
                                 <connections>
                                     <action selector="wechat:" destination="whP-gf-Uak" eventType="touchUpInside" id="laj-s9-RsX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mmh-cK-HM4">
-                                <rect key="frame" x="164" y="248.5" width="46" height="30"/>
+                                <rect key="frame" x="164.5" y="248.5" width="46" height="30"/>
                                 <state key="normal" title="支付宝"/>
                                 <connections>
                                     <action selector="ali:" destination="whP-gf-Uak" eventType="touchUpInside" id="hEg-gt-YWI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAb-IZ-Pys">
+                                <rect key="frame" x="172" y="393" width="31" height="30"/>
+                                <state key="normal" title="银联"/>
+                                <connections>
+                                    <action selector="unionPay:" destination="whP-gf-Uak" eventType="touchUpInside" id="vjg-hU-rwA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="TAb-IZ-Pys" firstAttribute="top" secondItem="6OP-Z4-Roh" secondAttribute="bottom" constant="44.5" id="aKD-ZS-h9s"/>
                             <constraint firstItem="6OP-Z4-Roh" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="i88-lz-glN"/>
+                            <constraint firstItem="TAb-IZ-Pys" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="pKj-QN-TEA"/>
                             <constraint firstItem="6OP-Z4-Roh" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="sF9-2W-QLg"/>
                             <constraint firstItem="Mmh-cK-HM4" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="sFg-wf-cVh"/>
                             <constraint firstItem="6OP-Z4-Roh" firstAttribute="top" secondItem="Mmh-cK-HM4" secondAttribute="bottom" constant="40" id="vLm-vi-HES"/>

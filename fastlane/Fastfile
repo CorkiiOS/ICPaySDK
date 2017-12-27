@@ -1,0 +1,31 @@
+
+
+
+desc "提交一个私有库"
+lane :blib do |options|
+target_version = options[:version]
+project        = options[:project]
+path           = "#{project}.podspec"
+
+cocoapods(
+clean: true,
+podfile: "./Example/Podfile"
+)  # pod install 重新安装一下代码
+git_add(path: ".") # git add .
+git_commit(path: ".", message: "提交本地代码") # git commit -m 'xxx'
+push_to_git_remote # git push origin master
+
+if git_tag_exists(tag: target_version)
+UI.message("已经存在这个标签, 处理操作: 删除本地&远程标签#{target_version} 🚀")
+git_remove_tag(tag: target_version, rLocal:true, rRemote:true)
+end
+
+add_git_tag(tag: target_version) # git tag -a xx
+push_to_git_remote # git push --tags
+
+pod_lib_lint(allow_warnings: true, use_libraries: true) # pod lib
+pod_push(path: path, repo: “master”) # 提交到私有仓库
+
+end
+
+
