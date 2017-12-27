@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
 s.subspec 'ICPayManager' do |mgr|
 
-mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDKCommon,BasePayFactory,IPay}.{h,m}'
+mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDKCommon,BasePayFactory,IPay,ICIUnionpayModel}.{h,m}'
 
 end
 
