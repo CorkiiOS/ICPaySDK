@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICBasePayFactory.h
+../../../../../ICPaySDK/Classes/ICManager/ICBasePayFactory.h

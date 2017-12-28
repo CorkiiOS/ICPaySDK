@@ -2,7 +2,7 @@
 //  UnionModel.h
 //  ICPaySDK_Example
 //
-//  Created by 王志刚 on 2017/12/27.
+//  Created by iCorki on 2017/12/27.
 //  Copyright © 2017年 corkiios. All rights reserved.
 //
 

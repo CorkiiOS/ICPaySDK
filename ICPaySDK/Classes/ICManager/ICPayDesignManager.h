@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ICPaySDKCommon.h"
-#import "ICMessageModel.h"
-#import "ICIAliModel.h"
-#import "ICIWxModel.h"
-#import "ICError.h"
-#import "ICIUnionpayModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@class ICMessageModel;
+@class ICMessageModel, ICError;
+
+typedef void(^ICCompletion)(ICError *);
 
 @interface ICPayDesignManager : NSObject
 
@@ -55,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)payWithModel:(id)model
            controller:(nullable UIViewController *)controller
-           completion:(ICCompletion)completion;
+           completion:(nullable ICCompletion)completion;
 /**
  处理支付回调9.0以前
  

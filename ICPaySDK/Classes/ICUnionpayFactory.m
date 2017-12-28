@@ -2,13 +2,13 @@
 //  ICUnionpayFactory.m
 //  ICPaySDK
 //
-//  Created by 王志刚 on 2017/12/27.
+//  Created by iCorki on 2017/12/27.
 //
 
 #import "ICUnionpayFactory.h"
 #import "UPPaymentControl.h"
-#import "ICIUnionpayModel.h"
-#import "ICError.h"
+#import <ICPaySDK/ICIUnionpayModel.h>
+#import <ICPaySDK/ICAssert.h>
 @interface ICUnionpayFactory()
 
 @property (nonatomic) ICCompletion completion;
@@ -20,6 +20,8 @@
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
+    
+    ICParameterAssert(controller);
     
     self.completion = completion;
     id<ICIUnionpayModel> unionModel = model;
@@ -38,16 +40,16 @@
     [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
         
         if([code isEqualToString:@"success"]) {
-            //结果code为成功时，去商户后台查询一下确保交易是成功的再展示成功
-            self.completion([ICError buildErrWithCode:ICErrorStatusCodeSuccess message:self.message]);
+         
+            [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
         }
         else if([code isEqualToString:@"fail"]) {
-            //交易失败
-            self.completion([ICError buildErrWithCode:ICErrorStatusCodeFailure message:self.message]);
+       
+            [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
         }
         else if([code isEqualToString:@"cancel"]) {
-            //交易取消
-            self.completion([ICError buildErrWithCode:ICErrorStatusCodeUserCancel message:self.message]);
+            
+             [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
         }
     }];
     

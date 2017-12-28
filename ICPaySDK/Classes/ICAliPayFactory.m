@@ -7,9 +7,10 @@
 //
 
 #import "ICAliPayFactory.h"
-#import "ICIAliModel.h"
 #import <AlipaySDK/AlipaySDK.h>
-#import "ICError.h"
+#import "ICAssert.h"
+#import "ICIAliModel.h"
+
 @interface ICAliPayFactory()
 
 @property (nonatomic) ICCompletion completion;
@@ -58,12 +59,13 @@
 - (void)handleResult:(NSDictionary *)result {
     NSInteger code = [result[@"resultStatus"] integerValue];
     if (code == 9000) {
-        self.completion([ICError buildErrWithCode:ICErrorStatusCodeSuccess message:self.message]);
+        [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
     }else if (code == 6001) {
-        self.completion([ICError buildErrWithCode:ICErrorStatusCodeUserCancel message:self.message]);
+        [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
     }else {
-        self.completion([ICError buildErrWithCode:ICErrorStatusCodeFailure message:self.message]);
+        [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
     }
+
 }
 /*
  resultStatus，状态码，SDK里没对应信息，第一个文档里有提到：

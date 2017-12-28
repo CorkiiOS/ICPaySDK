@@ -7,8 +7,7 @@
 //
 
 #import "ICAppDelegate.h"
-#import <ICPayDesignManager.h>
-
+#import <ICPaySDK.h>
 @implementation ICAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,6 +16,14 @@
     [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付的APPId,如果不使用微信支付可以忽略"} messageBlock:^(ICMessageModel *message) {
         message.cancel = @"取消";
     }];
+    
+    /*
+     [[ICPayDesignManager shareInstance] registerSDKOption:^{
+     //自己注册SDK 做想要的操作
+     } messageBlock:^(ICMessageModel * _Nonnull message) {
+     
+     }];
+     */
     
     return YES;
 }

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICError.h
+../../../../../ICPaySDK/Classes/ICManager/ICError.h

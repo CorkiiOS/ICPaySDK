@@ -8,7 +8,7 @@
 ## Example
 
 * 手动配置环境或使用Pod
-* #import "ICPaySDK"
+#import <ICPaySDK.h>
 * 初始化SDK
 
 ```

@@ -7,9 +7,16 @@
 //
 
 #import "ICPayDesignManager.h"
-#import "ICIPay.h"
-
 #import <objc/message.h>
+#import "ICIPay.h"
+#import "ICAssert.h"
+#import "ICDebugLog.h"
+#import "ICPaySDKCommon.h"
+#import "ICMessageModel.h"
+#import "ICIAliModel.h"
+#import "ICIWxModel.h"
+#import "ICIUnionpayModel.h"
+#import "ICError.h"
 
 @interface ICPayDesignManager()
 
@@ -87,6 +94,7 @@
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
+    
     if ([model conformsToProtocol:@protocol(ICIWxModel)]) {
         self.channel = ICWxPayChannelKey;
     }
@@ -104,6 +112,7 @@
     if (pay == nil) {
         if (completion) {
             completion([ICError buildErrWithCode:ICErrorStatusCodeChannelFail message:self.model]);
+            ICLog(@"创建支付对象失败！！");
         }
         return;
     }

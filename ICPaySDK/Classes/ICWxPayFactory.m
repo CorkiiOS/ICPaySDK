@@ -7,10 +7,9 @@
 //
 
 #import "ICWxPayFactory.h"
-#import "WXApi.h"
-#import "ICIWxModel.h"
-#import "ICError.h"
-
+#import <ICPaySDK/ICDebugLog.h>
+#import <ICIWxModel.h>
+#import <WXApi.h>
 @interface ICWxPayFactory()<WXApiDelegate>
 
 @property (nonatomic) ICCompletion completion;
@@ -24,9 +23,9 @@
     if (appId) {
         BOOL isSuccess = [WXApi registerApp:appId];
         if (isSuccess) {
-            NSLog(@"wechatPay sdk register success");
+            ICLog(@"wechatPay sdk register success");
         }else {
-            NSLog(@"wechatPay sdk register failure");
+            ICLog(@"wechatPay sdk register failure");
         }
     }
 }
@@ -37,14 +36,10 @@
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
-    if (completion) {
-        self.completion = completion;
-    }
-    if (completion) {
-        if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
-            self.completion([ICError buildErrWithCode:ICErrorStatusCodeUnsupported message:self.message]);
-            return;
-        }
+  
+    if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
+        [self handleResultWithCode:ICErrorStatusCodeUnsupported completion:self.completion];
+        return;
     }
 
     id<ICIWxModel> wxModel = model;
@@ -94,21 +89,18 @@
         PayResp *response = (PayResp *)resp;
         switch (response.errCode) {
             case WXSuccess:
-                if (self.completion) {
-                    self.completion([ICError buildErrWithCode:ICErrorStatusCodeSuccess message:self.message]);
-                }
+                [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
+
                 break;
                 
             case WXErrCodeUserCancel:
-                if (self.completion) {
-                    self.completion([ICError buildErrWithCode:ICErrorStatusCodeUserCancel message:self.message]);
-                }
+                [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
+
                 break;
             default:
             {
-                if (self.completion) {
-                    self.completion([ICError buildErrWithCode:ICErrorStatusCodeFailure message:self.message]);
-                }
+                [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
+
             }
                 break;
                 
