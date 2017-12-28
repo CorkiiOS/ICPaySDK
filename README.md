@@ -89,7 +89,7 @@ model.tn = tn; //开发模式
 
 * pod 'ICPaySDK/ICWxPay'
 * pod 'ICPaySDK/ICAliPay'
-
+* pod 'ICPaySDK/UnionPay'
 
 ## Requirements
 
