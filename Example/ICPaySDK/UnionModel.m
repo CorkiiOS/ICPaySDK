@@ -19,7 +19,7 @@
 }
 
 - (NSString *)union_tnModel {
-    return @"01";
+    return @"01";//测试环境
 }
 
 @end

@@ -63,7 +63,7 @@ completion:^(ICError *error) {
 }];
 
 ```
-*银联支付
+* 银联支付
 
 ```
 AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
