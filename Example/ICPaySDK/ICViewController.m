@@ -22,6 +22,10 @@
 
 @implementation ICViewController
 
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,7 +50,6 @@
             创建对应的模型 遵守对应的协议 实现 一行代码完成支付
      
             后面抽出时间实现本地签名支付！！！！
-     
      
             感谢支持
             欢迎star!!
@@ -75,8 +78,11 @@
             completion(result[@"weChatPay"],result[@"alipay"]);
             
         }else if ([[data objectForKey:@"status"] integerValue] == 500){
+            
         }else {
+            
         }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -92,9 +98,21 @@
         NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
         UnionModel *model = [UnionModel new];
         model.tn = tn;
+        /*
+         经过测试 银联SDK会一直引用 self 再调用一次 银联SDK 支付接口 此处self 才dealloc
+         
+         
+         [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
+         
+         */
         [[ICPayDesignManager shareInstance] payWithModel:model controller:self completion:^(ICError *error) {
             [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+            
+            
+            [self test];
+
         }];
+
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -111,6 +129,9 @@
                                               controller:nil
                                               completion:^(ICError *error) {
                                                   [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+                                                  
+                                                  [self test];
+
                                               }];
     }];
    
@@ -125,8 +146,15 @@
                                               controller:nil
                                               completion:^(ICError *error) {
                                                   [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+                                                  
+                                                  [self test];
                                               }];
     }];
+}
+
+
+- (void)test {
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)didReceiveMemoryWarning

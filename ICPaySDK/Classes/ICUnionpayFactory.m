@@ -7,8 +7,10 @@
 
 #import "ICUnionpayFactory.h"
 #import "UPPaymentControl.h"
-#import <ICPaySDK/ICIUnionpayModel.h>
-#import <ICPaySDK/ICAssert.h>
+#import "ICIUnionpayModel.h"
+#import "ICDebugLog.h"
+#import "ICAssert.h"
+
 @interface ICUnionpayFactory()
 
 @property (nonatomic) ICCompletion completion;
@@ -26,11 +28,16 @@
     self.completion = completion;
     id<ICIUnionpayModel> unionModel = model;
     if (!unionModel.union_tn) {
+        ICLog(@"银联支付参数 tn 为空");
         return;
     }
     
-    [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
-
+    BOOL isSuccess = [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
+    if (isSuccess) {
+        ICLog(@"调起银联支付成功");
+    }else {
+        ICLog(@"调起银联支付失败");
+    }
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url
@@ -51,6 +58,7 @@
             
              [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
         }
+        self.completion = nil;
     }];
     
     return YES;

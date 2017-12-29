@@ -98,43 +98,13 @@
 
                 break;
             default:
-            {
                 [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
 
-            }
                 break;
                 
         }
+        self.completion = nil;
     }
 }
 
 @end
-
-/*
-- (void)payWithCharge:(ICPayCharge *)charge
-scheme:(NSString *)scheme
-controller:(UIViewController *)controller
-completion:(ICCompletion)completion {
-    
-    if (completion) {
-        self.completion = completion;
-    }
-    if (completion) {
-        if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
-            self.completion([ICError buildErrWithCode:ICErrorStatusCodeUnsupported]);
-            return;
-        }
-    }
-    
-    NSDictionary *dict = charge.credential;
-    PayReq *request = [[PayReq alloc] init];
-    request.partnerId = dict[@"partnerId"];
-    request.prepayId= dict[@"prepayId"];
-    request.package = @"Sign=WXPay";
-    request.nonceStr= dict[@"noncestr"];
-    NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
-    request.timeStamp =   stamp.intValue;;
-    request.sign= dict[@"sign"];
-    [WXApi sendReq:request];
-}
-*/

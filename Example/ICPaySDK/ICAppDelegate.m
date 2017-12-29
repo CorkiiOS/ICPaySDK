@@ -8,6 +8,7 @@
 
 #import "ICAppDelegate.h"
 #import <ICPaySDK.h>
+#import "ICCircleTestViewController.h"
 @implementation ICAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,6 +16,7 @@
     // Override point for customization after application launch.
     [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付的APPId,如果不使用微信支付可以忽略"} messageBlock:^(ICMessageModel *message) {
         message.cancel = @"取消";
+        //配置回调提示
     }];
     
     /*
@@ -25,6 +27,9 @@
      }];
      */
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ICCircleTestViewController new]];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

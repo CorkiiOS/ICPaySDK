@@ -71,6 +71,8 @@ typedef void(^ICCompletion)(ICError *);
  */
 - (BOOL)handleOpenURL:(NSURL *)url
            completion:(nullable ICCompletion)completion;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

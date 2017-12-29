@@ -6,8 +6,8 @@
 //  Copyright © 2017年 iCorki. All rights reserved.
 //
 
-#ifndef ICPaySDK_h
-#define ICPaySDK_h
+#ifndef ICPaySDKCommon_h
+#define ICPaySDKCommon_h
 #if __OBJC__
 
 /**

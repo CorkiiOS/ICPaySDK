@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		042DACFB1FF4AB7B00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 042DACFA1FF4AB7A00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf */; };
+		04FA91881FF63FD400D4920A /* ICCircleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */; };
+		04FA91891FF63FD400D4920A /* ICCircleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */; };
 		04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65C1FE8E93B0079711F /* ApiXml.m */; };
 		04FBC6621FE8E93B0079711F /* payRequsestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */; };
 		04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6601FE8E93B0079711F /* WXUtil.m */; };
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		042DACFA1FF4AB7A00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "中国银联手机支付控件接入指南iOS.pdf"; sourceTree = "<group>"; };
+		04FA91851FF63FD400D4920A /* ICCircleTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICCircleTestViewController.h; sourceTree = "<group>"; };
+		04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICCircleTestViewController.m; sourceTree = "<group>"; };
+		04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICCircleTestViewController.xib; sourceTree = "<group>"; };
 		04FBC65B1FE8E93B0079711F /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
 		04FBC65C1FE8E93B0079711F /* ApiXml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiXml.m; sourceTree = "<group>"; };
 		04FBC65D1FE8E93B0079711F /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
@@ -175,6 +180,9 @@
 				04FBC65A1FE8E93B0079711F /* WXPay */,
 				6003F59C195388D20070C39A /* ICAppDelegate.h */,
 				6003F59D195388D20070C39A /* ICAppDelegate.m */,
+				04FA91851FF63FD400D4920A /* ICCircleTestViewController.h */,
+				04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */,
+				04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* ICViewController.h */,
 				6003F5A6195388D20070C39A /* ICViewController.m */,
@@ -325,6 +333,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				04FA91891FF63FD400D4920A /* ICCircleTestViewController.xib in Resources */,
 				042DACFB1FF4AB7B00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
@@ -450,6 +459,7 @@
 			files = (
 				04FBC6681FE8E9590079711F /* AliModel.m in Sources */,
 				04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */,
+				04FA91881FF63FD400D4920A /* ICCircleTestViewController.m in Sources */,
 				04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */,
 				6003F59E195388D20070C39A /* ICAppDelegate.m in Sources */,
 				04FBC6691FE8E9590079711F /* WxModel.m in Sources */,

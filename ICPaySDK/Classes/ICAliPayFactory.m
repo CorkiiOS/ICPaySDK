@@ -66,6 +66,7 @@
         [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
     }
 
+    self.completion = nil;
 }
 /*
  resultStatus，状态码，SDK里没对应信息，第一个文档里有提到：
