@@ -101,7 +101,15 @@ ICPaySDK is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ICPaySDK'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target 'TargetName' do
+# 1.3.0之前的版本微信回调有问题，1.3.1已修复
+pod 'ICPaySDK', '~> 1.3.1'
+
+end
+
 ```
 
 ## Author
