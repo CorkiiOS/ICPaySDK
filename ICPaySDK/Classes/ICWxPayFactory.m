@@ -36,7 +36,7 @@
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
-  
+    self.completion = completion;
     if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
         [self handleResultWithCode:ICErrorStatusCodeUnsupported completion:self.completion];
         return;
