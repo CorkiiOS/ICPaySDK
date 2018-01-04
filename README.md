@@ -12,7 +12,7 @@
 * 初始化SDK
 
 ```
-[[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"wx1cd2880e51ed36e9"} messageBlock:^(ICMessageModel *message) {
+[[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付需要的appid"} messageBlock:^(ICMessageModel *message) {
 message.cancel = @"取消";
 }];
 
