@@ -7,8 +7,10 @@
 //
 
 #import "WxModel.h"
-#import "payRequsestHandler.h"
 @implementation WxModel
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
 
 /** 商家向财付通申请的商家id */
 - (NSString *)partnerId {

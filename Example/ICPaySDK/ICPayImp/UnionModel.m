@@ -9,6 +9,9 @@
 #import "UnionModel.h"
 
 @implementation UnionModel
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
 
 - (NSString *)scheme {
     return @"AliPayURLScheme.ic";

@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		042DACFB1FF4AB7B00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 042DACFA1FF4AB7A00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf */; };
+		04523E352002FFC800398C33 /* ICPayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04523E342002FFC800398C33 /* ICPayUtils.m */; };
 		04FA91881FF63FD400D4920A /* ICCircleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */; };
 		04FA91891FF63FD400D4920A /* ICCircleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */; };
-		04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65C1FE8E93B0079711F /* ApiXml.m */; };
-		04FBC6621FE8E93B0079711F /* payRequsestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */; };
-		04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6601FE8E93B0079711F /* WXUtil.m */; };
 		04FBC6681FE8E9590079711F /* AliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6641FE8E9580079711F /* AliModel.m */; };
 		04FBC6691FE8E9590079711F /* WxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6651FE8E9590079711F /* WxModel.m */; };
 		48F85DB41FF3C74100C67E31 /* UnionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F85DB31FF3C74100C67E31 /* UnionModel.m */; };
@@ -47,15 +45,11 @@
 
 /* Begin PBXFileReference section */
 		042DACFA1FF4AB7A00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "中国银联手机支付控件接入指南iOS.pdf"; sourceTree = "<group>"; };
+		04523E332002FFC800398C33 /* ICPayUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICPayUtils.h; sourceTree = "<group>"; };
+		04523E342002FFC800398C33 /* ICPayUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICPayUtils.m; sourceTree = "<group>"; };
 		04FA91851FF63FD400D4920A /* ICCircleTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICCircleTestViewController.h; sourceTree = "<group>"; };
 		04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICCircleTestViewController.m; sourceTree = "<group>"; };
 		04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ICCircleTestViewController.xib; sourceTree = "<group>"; };
-		04FBC65B1FE8E93B0079711F /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
-		04FBC65C1FE8E93B0079711F /* ApiXml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiXml.m; sourceTree = "<group>"; };
-		04FBC65D1FE8E93B0079711F /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
-		04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payRequsestHandler.m; sourceTree = "<group>"; };
-		04FBC65F1FE8E93B0079711F /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
-		04FBC6601FE8E93B0079711F /* WXUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUtil.m; sourceTree = "<group>"; };
 		04FBC6641FE8E9580079711F /* AliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliModel.m; sourceTree = "<group>"; };
 		04FBC6651FE8E9590079711F /* WxModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WxModel.m; sourceTree = "<group>"; };
 		04FBC6661FE8E9590079711F /* AliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliModel.h; sourceTree = "<group>"; };
@@ -120,17 +114,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04FBC65A1FE8E93B0079711F /* WXPay */ = {
+		04523E322002FF8700398C33 /* ICPayImp */ = {
 			isa = PBXGroup;
 			children = (
-				04FBC65B1FE8E93B0079711F /* ApiXml.h */,
-				04FBC65C1FE8E93B0079711F /* ApiXml.m */,
-				04FBC65D1FE8E93B0079711F /* payRequsestHandler.h */,
-				04FBC65E1FE8E93B0079711F /* payRequsestHandler.m */,
-				04FBC65F1FE8E93B0079711F /* WXUtil.h */,
-				04FBC6601FE8E93B0079711F /* WXUtil.m */,
+				04FBC6661FE8E9590079711F /* AliModel.h */,
+				04FBC6641FE8E9580079711F /* AliModel.m */,
+				04FBC6671FE8E9590079711F /* WxModel.h */,
+				04FBC6651FE8E9590079711F /* WxModel.m */,
+				48F85DB21FF3C74100C67E31 /* UnionModel.h */,
+				48F85DB31FF3C74100C67E31 /* UnionModel.m */,
+				04523E332002FFC800398C33 /* ICPayUtils.h */,
+				04523E342002FFC800398C33 /* ICPayUtils.m */,
 			);
-			path = WXPay;
+			path = ICPayImp;
 			sourceTree = "<group>";
 		};
 		6003F581195388D10070C39A = {
@@ -171,13 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				042DACFA1FF4AB7A00BB3CE7 /* 中国银联手机支付控件接入指南iOS.pdf */,
-				04FBC6661FE8E9590079711F /* AliModel.h */,
-				04FBC6641FE8E9580079711F /* AliModel.m */,
-				04FBC6671FE8E9590079711F /* WxModel.h */,
-				04FBC6651FE8E9590079711F /* WxModel.m */,
-				48F85DB21FF3C74100C67E31 /* UnionModel.h */,
-				48F85DB31FF3C74100C67E31 /* UnionModel.m */,
-				04FBC65A1FE8E93B0079711F /* WXPay */,
+				04523E322002FF8700398C33 /* ICPayImp */,
 				6003F59C195388D20070C39A /* ICAppDelegate.h */,
 				6003F59D195388D20070C39A /* ICAppDelegate.m */,
 				04FA91851FF63FD400D4920A /* ICCircleTestViewController.h */,
@@ -458,15 +448,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FBC6681FE8E9590079711F /* AliModel.m in Sources */,
-				04FBC6631FE8E93B0079711F /* WXUtil.m in Sources */,
 				04FA91881FF63FD400D4920A /* ICCircleTestViewController.m in Sources */,
-				04FBC6611FE8E93B0079711F /* ApiXml.m in Sources */,
 				6003F59E195388D20070C39A /* ICAppDelegate.m in Sources */,
 				04FBC6691FE8E9590079711F /* WxModel.m in Sources */,
 				6003F5A7195388D20070C39A /* ICViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				04523E352002FFC800398C33 /* ICPayUtils.m in Sources */,
 				48F85DB41FF3C74100C67E31 /* UnionModel.m in Sources */,
-				04FBC6621FE8E93B0079711F /* payRequsestHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +604,7 @@
 			baseConfigurationReference = 85019E0DD0D32D21DACE1972 /* Pods-ICPaySDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = K726HQ828M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
@@ -632,6 +621,7 @@
 			baseConfigurationReference = D6E895E2F22528B489E2D036 /* Pods-ICPaySDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = K726HQ828M;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";

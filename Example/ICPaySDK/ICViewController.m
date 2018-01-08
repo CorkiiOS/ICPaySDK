@@ -15,6 +15,7 @@
 
 #define kURL_TN_Normal   @"http://101.231.204.84:8091/sim/getacptn"
 
+#import "ICPayUtils.h"
 
 @interface ICViewController ()
 
@@ -65,102 +66,49 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)requestPaySignCompletion:(void(^)(NSDictionary *wechat, NSString *orderString))completion {
-    NSString *URLString = @"";
-    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    params[@"count"] = @(1);
-    params[@"typeId"] = @(1);
-    params[@"token"] = @"cf5dssss";
-    [[AFHTTPSessionManager manager] POST:URLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable data) {
-        if ([[data objectForKey:@"status"] integerValue] == 200) {
-            
-            NSDictionary *result = data[@"data"];;
-            completion(result[@"weChatPay"],result[@"alipay"]);
-            
-        }else if ([[data objectForKey:@"status"] integerValue] == 500){
-            
-        }else {
-            
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-}
-
 - (IBAction)unionPay:(id)sender {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer = serializer;
     
-    [manager POST:kURL_TN_Normal parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable data) {
-        
-        NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
-        UnionModel *model = [UnionModel new];
-        model.tn = tn;
-        /*
-         经过测试 银联SDK会一直引用 self 再调用一次 银联SDK 支付接口 此处self 才dealloc
-         
-         
-         [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
-         
-         */
-        [[ICPayDesignManager shareInstance] payWithModel:model controller:self completion:^(ICError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
-            
-            
-            [self test];
+    [ICPayUtils unionPayWithURL:kURL_TN_Normal params:nil controller:self success:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
 
-        }];
+    } failure:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
 
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+    } cancel:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+
     }];
-    
-   
 }
 
 - (IBAction)ali:(id)sender {
-    [self requestPaySignCompletion:^(NSDictionary *wechat, NSString *orderString) {
-        AliModel *model = [[AliModel alloc] init];
-        model.orderString = orderString;
-        [[ICPayDesignManager shareInstance] payWithModel:model
-                                              controller:nil
-                                              completion:^(ICError *error) {
-                                                  [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
-                                                  
-                                                  [self test];
-
-                                              }];
+#warning 需要自己完善
+    [ICPayUtils aliPayWithURL:@"" params:nil success:^(NSString * _Nullable message) {
+         [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+    } failure:^(NSString * _Nullable message) {
+         [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+    } cancel:^(NSString * _Nullable message) {
+         [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
     }];
-   
 }
 
 - (IBAction)wechat:(id)sender {
-    WxModel *model = [[WxModel alloc] init];
-    
-    [self requestPaySignCompletion:^(NSDictionary *wechat, NSString *orderString) {
-        model.data = wechat;
-        [[ICPayDesignManager shareInstance] payWithModel:model
-                                              controller:nil
-                                              completion:^(ICError *error) {
-                                                  [[[UIAlertView alloc] initWithTitle:@"tips" message:error.message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
-                                                  
-                                                  [self test];
-                                              }];
+
+#warning 需要自己完善
+    [ICPayUtils wxPayWithURL:@"" params:@{} success:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+
+    } failure:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+
+    } cancel:^(NSString * _Nullable message) {
+        [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
+
     }];
 }
 
 
 - (void)test {
     NSLog(@"%s", __FUNCTION__);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
