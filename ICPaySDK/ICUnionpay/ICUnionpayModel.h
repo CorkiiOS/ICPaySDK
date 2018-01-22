@@ -2,7 +2,7 @@
 //  ICUnionpayModel.h
 //  AFNetworking
 //
-//  Created by 王志刚 on 2018/1/20.
+//  Created by iCorki. on 2018/1/20.
 //
 
 #import <Foundation/Foundation.h>
