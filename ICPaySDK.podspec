@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/CorkiiOS/ICPaySDK.git', :tag => s.version.to_s }
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
-  s.source_files = 'ICPaySDK/Classes/**/*'
+  s.source_files = 'ICPaySDK/**/*'
 
 
     s.subspec 'ICPayManager' do |mgr|
