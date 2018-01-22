@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICIUnionpayModel.h
+../../../../../ICPaySDK/ICManager/ICIUnionpayModel.h

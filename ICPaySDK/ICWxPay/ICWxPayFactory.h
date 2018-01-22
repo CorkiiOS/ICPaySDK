@@ -7,7 +7,6 @@
 //
 
 #import "ICBasePayFactory.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ICWxPayFactory : ICBasePayFactory

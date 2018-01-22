@@ -7,11 +7,6 @@
 //
 
 #import "ICViewController.h"
-#import "AliModel.h"
-#import "WxModel.h"
-#import "UnionModel.h"
-#import <AFNetworking.h>
-#import <ICPaySDK.h>
 
 #define kURL_TN_Normal   @"http://101.231.204.84:8091/sim/getacptn"
 
@@ -82,7 +77,8 @@
 
 - (IBAction)ali:(id)sender {
 #warning 需要自己完善
-    [ICPayUtils aliPayWithURL:@"" params:nil success:^(NSString * _Nullable message) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [ICPayUtils aliPayWithURL:@"" params:params success:^(NSString * _Nullable message) {
          [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
     } failure:^(NSString * _Nullable message) {
          [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
@@ -94,7 +90,8 @@
 - (IBAction)wechat:(id)sender {
 
 #warning 需要自己完善
-    [ICPayUtils wxPayWithURL:@"" params:@{} success:^(NSString * _Nullable message) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [ICPayUtils wxPayWithURL:@"" params:params success:^(NSString * _Nullable message) {
         [[[UIAlertView alloc] initWithTitle:@"tips" message:message delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"yes", nil] show];
 
     } failure:^(NSString * _Nullable message) {

@@ -21,6 +21,10 @@
 @interface ICPayDesignManager()
 
 @property (nonatomic, strong) NSDictionary *channelMap;
+@property (nonatomic, strong) NSDictionary *identifierMap;
+@property (nonatomic, strong) NSMutableDictionary *replaceKeyMap;
+@property (nonatomic, strong) NSString *scheme;
+
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic, weak) ICMessageModel *model;
 
@@ -85,30 +89,52 @@
     }
 }
 
-/**
- 消除警告
- */
-- (void)initWithMessage:(id)msg {};
-- (void)initWithMessage:(id)msg appId:(id)appid {};
+- (void)loadAutoParserConfigWithScheme:(NSString *)scheme
+                         identifierMap:(NSDictionary *)identifierMap
+                         replaceKeyMap:(NSDictionary *)replaceKeyMap {
+    self.identifierMap = identifierMap;
+    self.replaceKeyMap = replaceKeyMap.mutableCopy;
+    self.scheme = scheme;
+}
 
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
-    
-    if ([model conformsToProtocol:@protocol(ICIWxModel)]) {
-        self.channel = ICWxPayChannelKey;
+    /*
+     支付参数支持json
+     需要一个唯一的标示来代表某种支付方式
+     例如：通过 orderString 判断为支付宝支付
+          通过 partnerId  判断为微信支付
+          通过 tn 判断为银联支付
+     
+     */
+    if ([model isKindOfClass:[NSString class]]) {
+        NSError *error = nil;
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[model dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
+        model = [self parserData:data];
+        
+    }else if ([model isKindOfClass:[NSDictionary class]]) {
+        model = [self parserData:model];
+    }else {
+        if ([model conformsToProtocol:@protocol(ICIWxModel)]) {
+            self.channel = ICWxPayChannelKey;
+        }
+        
+        if ([model conformsToProtocol:@protocol(ICIAliModel)]) {
+            self.channel = ICALiPayChannelKey;
+        }
+        
+        if ([model conformsToProtocol:@protocol(ICIUnionpayModel)]) {
+            self.channel = ICUnionPayChannelKey;
+        }
     }
     
-    if ([model conformsToProtocol:@protocol(ICIAliModel)]) {
-        self.channel = ICALiPayChannelKey;
-    }
-    
-    if ([model conformsToProtocol:@protocol(ICIUnionpayModel)]) {
-        self.channel = ICUnionPayChannelKey;
+    if (model == nil) {
+        ICLog(@"支付参数获取失败失败！！");
+        return;
     }
     
     id<ICIPay> pay = self.channelMap[self.channel];
-    
     if (pay == nil) {
         if (completion) {
             completion([ICError buildErrWithCode:ICErrorStatusCodeChannelFail message:self.model]);
@@ -138,6 +164,42 @@
     return [self handleOpenURL:url
              sourceApplication:nil
                     completion:completion];
+}
+
+- (id)parserData:(NSDictionary *)data {
+    if (!self.identifierMap) {
+        return nil;
+    }
+    NSString *aliIdentifier = self.identifierMap[ICALiPayChannelKey];
+    NSString *wxIdentifier = self.identifierMap[ICWxPayChannelKey];
+    NSString *unionIdentifier = self.identifierMap[ICUnionPayChannelKey];
+    
+    if ([[data allKeys] containsObject:aliIdentifier]) {
+        self.channel = ICALiPayChannelKey;
+        id aliIns = [NSClassFromString(@"ICAliPayModel") new];
+        if (aliIns) {
+            ((void(*)(id,SEL, id, id))objc_msgSend)(aliIns, @selector(setOrderString:scheme:), data[aliIdentifier],self.scheme);
+        }
+        return aliIns;
+        
+    }else if ([[data allKeys] containsObject:wxIdentifier]) {
+        self.channel = ICWxPayChannelKey;
+        id wxiIns = [NSClassFromString(@"ICWxPayModel") new];
+        if (wxiIns) {
+            ((void(*)(id,SEL, id, id))objc_msgSend)(wxiIns, @selector(setData:keyMapper:), data[wxIdentifier],self.replaceKeyMap);
+        }
+        return wxiIns;
+        
+    }else if ([[data allKeys] containsObject:unionIdentifier]) {
+        self.channel = ICUnionPayChannelKey;
+        id unionIns = [NSClassFromString(@"ICUnionpayModel") new];
+        if (unionIns) {
+            ((void(*)(id,SEL, id, id))objc_msgSend)(unionIns, @selector(setTn:scheme:), data[unionIdentifier],self.scheme);
+        }
+        return unionIns;
+
+    }
+    return nil;
 }
 #pragma mark - getter
 

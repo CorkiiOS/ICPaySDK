@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICAliPayFactory.h
+../../../../../ICPaySDK/ICAliPay/ICAliPayFactory.h

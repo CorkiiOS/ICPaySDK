@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICAssert.h
+../../../../../ICPaySDK/ICManager/ICAssert.h

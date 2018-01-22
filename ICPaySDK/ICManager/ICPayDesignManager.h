@@ -43,6 +43,27 @@ typedef void(^ICCompletion)(ICError *);
 - (void)registerSDKWithDictionary:(nullable NSDictionary *)dictionary messageBlock:(nullable void(^)(ICMessageModel *message))messageBlock;
 
 
+
+/**
+ 对后台参数自动解析的配置
+
+ @param scheme 第三方支付APP返回商家APP所需要scheme 支付宝／银联  微信的为APPID
+ @param identifierMap 识别支付方式的标识符
+ 例如 @{ICWxPayChannelKey : @"weChat" ,
+       ICALiPayChannelKey : @"alipay",
+       ICUnionPayChannelKey : @"tn"}
+ SDK内部通过 weChat 字段判断为使用微信支付
+ SDK内部通过 alipay 字段判断为使用支付宝支付
+ SDK内部通过 tn     字段判断为使用银联支付
+ 用户可自定义字段名称
+
+ @param replaceKeyMap 主要针对微信支付 替换默认的key 例如 将 partnerId 替换为 pID @{@"partnerId" : @"pID"}
+ */
+- (void)loadAutoParserConfigWithScheme:(NSString *)scheme
+                         identifierMap:(NSDictionary *)identifierMap
+                         replaceKeyMap:(NSDictionary *)replaceKeyMap;
+
+
 /**
  支付统一API
  
@@ -53,6 +74,8 @@ typedef void(^ICCompletion)(ICError *);
 - (void)payWithModel:(id)model
            controller:(nullable UIViewController *)controller
            completion:(nullable ICCompletion)completion;
+
+
 /**
  处理支付回调9.0以前
  

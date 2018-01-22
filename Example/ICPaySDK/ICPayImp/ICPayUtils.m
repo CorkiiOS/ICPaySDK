@@ -1,3 +1,5 @@
+
+
 //
 //  ICPayUtils.m
 //  ICPaySDK_Example
@@ -26,10 +28,15 @@
     [[AFHTTPSessionManager manager] POST:URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable data) {
         if ([[data objectForKey:@"status"] integerValue] == 200) {
             //拿到后台签名
-            NSString *orderString = data[@"data"][@"取到后台签名"];
-            AliModel *model = [AliModel new];
-            model.orderString = orderString;
-            [ICPayUtils _payWithModel:model controller:nil success:success failure:failure cancel:cancel];
+            NSString *orderString = data[@"data"][@"alipay"];
+            if (orderString) {
+                
+                //采用自建模型
+//                AliModel *model = [AliModel new];
+//                model.orderString = @"签名信息";
+                //采用自动解析方式
+                [ICPayUtils _payWithModel:@{@"alipay" : orderString} controller:nil success:success failure:failure cancel:cancel];
+            }
 
         }else {
             failure(@"网络等其他情况");
@@ -51,10 +58,8 @@
     [[AFHTTPSessionManager manager] POST:URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable data) {
         if ([[data objectForKey:@"status"] integerValue] == 200) {
             //拿到后台签名
-            NSDictionary *dic = data[@"data"][@"取到后台数据"];
-            WxModel *model = [WxModel new];
-            model.data = dic;
-            [ICPayUtils _payWithModel:model controller:nil success:success failure:failure cancel:cancel];
+            NSDictionary *dic = data[@"data"][@"weChatPay"];
+            [ICPayUtils _payWithModel:@{@"weChatPay" : dic} controller:nil success:success failure:failure cancel:cancel];
             
         }else {
             failure(@"网络等其他情况");
@@ -79,8 +84,8 @@
     [manager POST:URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable data) {
         
         NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
-        UnionModel *model = [UnionModel new];
-        model.tn = tn;
+//        UnionModel *model = [UnionModel new];
+//        model.tn = tn;
         /*
          经过测试 银联SDK会一直引用 self 再调用一次 银联SDK 支付接口 此处self 才dealloc
          
@@ -88,7 +93,7 @@
          [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
          
          */
-        [ICPayUtils _payWithModel:model controller:controller success:success failure:failure cancel:cancel];
+        [ICPayUtils _payWithModel:@{@"tn" : tn} controller:controller success:success failure:failure cancel:cancel];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICMessageModel.h
+../../../../../ICPaySDK/ICManager/ICMessageModel.h

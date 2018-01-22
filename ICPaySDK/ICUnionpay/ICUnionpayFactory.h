@@ -6,7 +6,6 @@
 //
 
 #import "ICBasePayFactory.h"
-
 @interface ICUnionpayFactory : ICBasePayFactory
 
 @end

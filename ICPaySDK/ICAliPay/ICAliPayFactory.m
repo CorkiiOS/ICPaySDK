@@ -77,20 +77,6 @@
  6002 网络连接出错
  memo， 提示信息，比如状态码为6001时，memo就是“用户中途取消”。但千万别完全依赖这个信息，如果未安装支付宝app，采用网页支付时，取消时状态码是6001，但这个memo是空的。。（当我发现这个问题的时候，我就决定，对于这么不靠谱的SDK，还是尽量靠自己吧。。）
  result，订单信息，以及签名验证信息。如果你不想做签名验证，那这个字段可以忽略了。。
- 
- - (void)payWithCharge:(ICPayCharge *)charge
- scheme:(NSString *)scheme
- controller:(UIViewController *)controller
- completion:(ICCompletion)completion {
- 
- self.completion = completion;
- 
- [[AlipaySDK defaultService] payOrder:charge.orderString
- fromScheme:scheme
- callback:^(NSDictionary *resultDic) {
- [self handleResult:resultDic];
- }];
- }
  */
 
 @end

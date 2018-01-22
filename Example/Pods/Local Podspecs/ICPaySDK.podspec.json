@@ -23,7 +23,7 @@
   "subspecs": [
     {
       "name": "ICPayManager",
-      "source_files": "ICPaySDK/Classes/ICManager/*.{h,m}"
+      "source_files": "ICPaySDK/ICManager/*.{h,m}"
     },
     {
       "name": "ICAliPay",
@@ -35,7 +35,7 @@
 
         ]
       },
-      "source_files": "ICPaySDK/Classes/ICAliPayFactory.{h,m}"
+      "source_files": "ICPaySDK/ICAliPay/*.{h,m}"
     },
     {
       "name": "ICWxPay",
@@ -47,7 +47,7 @@
 
         ]
       },
-      "source_files": "ICPaySDK/Classes/ICWxPayFactory.{h,m}"
+      "source_files": "ICPaySDK/ICWxPay/*.{h,m}"
     },
     {
       "name": "UnionPay",
@@ -59,7 +59,7 @@
 
         ]
       },
-      "source_files": "ICPaySDK/Classes/ICUnionpayFactory.{h,m}"
+      "source_files": "ICPaySDK/ICUnionpay/*.{h,m}"
     }
   ]
 }

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICDebugLog.h
+../../../../../ICPaySDK/ICManager/ICDebugLog.h

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICIPay.h
+../../../../../ICPaySDK/ICManager/ICIPay.h

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICManager/ICPaySDKCommon.h
+../../../../../ICPaySDK/ICManager/ICPaySDKCommon.h

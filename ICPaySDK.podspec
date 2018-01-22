@@ -15,9 +15,8 @@ Pod::Spec.new do |s|
 
     s.subspec 'ICPayManager' do |mgr|
 
-# mgr.source_files = 'ICPaySDK/Classes/IC{Error,IAliModel,IWxModel,MessageModel,PayDesignManager,PaySDKCommon,BasePayFactory,IPay,IUnionpayModel}.{h,m}'
 
-mgr.source_files = 'ICPaySDK/Classes/ICManager/*.{h,m}'
+   mgr.source_files = 'ICPaySDK/ICManager/*.{h,m}'
 
     end
 
@@ -25,7 +24,7 @@ mgr.source_files = 'ICPaySDK/Classes/ICManager/*.{h,m}'
 
     ali.dependency 'ICPaySDK/ICPayManager'
     ali.dependency 'AliPay_SDK'
-    ali.source_files = 'ICPaySDK/Classes/ICAliPayFactory.{h,m}'
+    ali.source_files = 'ICPaySDK/ICAliPay/*.{h,m}'
 
    end
 
@@ -33,7 +32,7 @@ mgr.source_files = 'ICPaySDK/Classes/ICManager/*.{h,m}'
 
     wx.dependency 'ICPaySDK/ICPayManager'
     wx.dependency 'WechatOpenSDK'
-    wx.source_files = 'ICPaySDK/Classes/ICWxPayFactory.{h,m}'
+    wx.source_files = 'ICPaySDK/ICWxPay/*.{h,m}'
 
     end
 
@@ -41,7 +40,7 @@ mgr.source_files = 'ICPaySDK/Classes/ICManager/*.{h,m}'
 
     un.dependency 'ICPaySDK/ICPayManager'
     un.dependency 'UnionPay_SDK_iOS'
-    un.source_files = 'ICPaySDK/Classes/ICUnionpayFactory.{h,m}'
+    un.source_files = 'ICPaySDK/ICUnionpay/*.{h,m}'
 
     end
 

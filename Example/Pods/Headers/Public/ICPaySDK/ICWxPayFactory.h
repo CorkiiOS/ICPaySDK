@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/Classes/ICWxPayFactory.h
+../../../../../ICPaySDK/ICWxPay/ICWxPayFactory.h

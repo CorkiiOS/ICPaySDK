@@ -14,10 +14,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付的APPId,如果不使用微信支付可以忽略"} messageBlock:^(ICMessageModel *message) {
+    [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付需要的APPID"} messageBlock:^(ICMessageModel *message) {
         message.cancel = @"取消";
         //配置回调提示
     }];
+    
+    //采用协议方式  即自建模型遵守 ICIAliModel／ICIWxModel／ICIUnionpayModel 可以忽略
+    [[ICPayDesignManager shareInstance] loadAutoParserConfigWithScheme:@"AliPayURLScheme.ic"
+                                                         identifierMap:@{ICWxPayChannelKey : @"weChatPay",
+                                                                         ICALiPayChannelKey : @"alipay",
+                                                                         ICUnionPayChannelKey : @"tn"}
+                                                         replaceKeyMap:@{}];
+    
     
     /*
      [[ICPayDesignManager shareInstance] registerSDKOption:^{
