@@ -218,10 +218,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
+# 1.3.0之前的版本微信回调有问题，1.3.1已修复
 
 target 'TargetName' do
-# 1.3.0之前的版本微信回调有问题，1.3.1已修复
-pod 'ICPaySDK', '~> 1.3.1'
+pod 'ICPaySDK', '~> 1.4.0'
 
 end
 
