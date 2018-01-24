@@ -61,7 +61,7 @@ typedef void(^ICCompletion)(ICError *);
  */
 - (void)loadAutoParserConfigWithScheme:(NSString *)scheme
                          identifierMap:(NSDictionary *)identifierMap
-                         replaceKeyMap:(NSDictionary *)replaceKeyMap;
+                         replaceKeyMap:(nullable NSDictionary *)replaceKeyMap;
 
 
 /**
