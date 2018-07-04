@@ -11,12 +11,82 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class ICMessageModel, ICError;
+@protocol ICPaySDKAutoServiceProtocol;
 
 typedef void(^ICCompletion)(ICError *);
 
 @interface ICPayDesignManager : NSObject
 
 + (instancetype)shareInstance;
+
+
+/**
+ 注册SDK
+
+ @param dictionary 如果项目中使用微信支付 dictionary = @{ICWxPayChannelKey : @"微信支付key"}，反之为nil
+ */
+- (void)registerSDKWithDictionary:(nullable NSDictionary *)dictionary;
+
+/**
+ 注册SDK
+
+ @param service 自动解析支付参数必须遵守的规则，详见ICPaySDKAutoServiceProtocol.h
+ */
+- (void)registerSDKAutoService:(id<ICPaySDKAutoServiceProtocol>)service;
+
+/**
+ 支付统一API
+ 
+ @param model 支付模型
+ @param controller 银联支付为必要参数，其他为nil
+ @param completion 完成回调
+ */
+- (void)payWithModel:(id)model
+          controller:(nullable UIViewController *)controller
+          completion:(nullable ICCompletion)completion;
+
+
+/**
+ 支付回调 9.0前后统一调用此方法
+
+ @param url ～
+ @param sourceApplication ～
+ @return ～
+ */
+- (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(nullable NSString *)sourceApplication;
+/**
+ 全局设置支付成功提示文字
+
+ @param text ～
+ */
+- (void)setGlobalPaySuccessText:(NSString *)text;
+
+/**
+ 全局设置支付取消文字
+
+ @param text ～
+ */
+- (void)setGlobalPayCancelText:(NSString *)text;
+
+/**
+ 全局设置支付失败文字
+
+ @param text ～
+ */
+- (void)setGlobalPayFailureText:(NSString *)text;
+
+
+/*******************************即将废弃**************************************/
+
+
+/**
+ 注册SDK
+ @param dictionary @{ICWxPayChannelKey:微信appkey}
+ @param messageBlock 配置文字信息
+ */
+
+- (void)registerSDKWithDictionary:(nullable NSDictionary *)dictionary messageBlock:(nullable void(^)(ICMessageModel *message))messageBlock DEPRECATED_MSG_ATTRIBUTE("use registerSDKWithDictionary: instead");
 
 /**
  注册SDK
@@ -30,19 +100,9 @@ typedef void(^ICCompletion)(ICError *);
  <string>weixin</string>
  </array>
  2. URLType 添加scheme
-
+ 
  */
-- (void)registerSDKOption:(nullable void(^)())option messageBlock:(nullable void(^)(ICMessageModel *message))messageBlock;
-
-/**
- 注册SDK
- @param dictionary @{ICWxPayChannelKey:微信appkey}
- @param messageBlock 配置文字信息
- */
-
-- (void)registerSDKWithDictionary:(nullable NSDictionary *)dictionary messageBlock:(nullable void(^)(ICMessageModel *message))messageBlock;
-
-
+- (void)registerSDKOption:(nullable void(^)())option messageBlock:(nullable void(^)(ICMessageModel *message))messageBlock DEPRECATED_MSG_ATTRIBUTE("use registerSDKWithDictionary: instead");
 
 /**
  对后台参数自动解析的配置
@@ -61,47 +121,19 @@ typedef void(^ICCompletion)(ICError *);
  */
 - (void)loadAutoParserConfigWithScheme:(NSString *)scheme
                          identifierMap:(NSDictionary *)identifierMap
-                         replaceKeyMap:(nullable NSDictionary *)replaceKeyMap;
-
-
-/**
- 支付统一API
- 
- @param model 支付模型
- @param controller 控制器
- @param completion 完成回调
- */
-- (void)payWithModel:(id)model
-           controller:(nullable UIViewController *)controller
-           completion:(nullable ICCompletion)completion;
-
-
-/**
- 处理支付回调9.0以前
- 
- @param url url
- @param sourceApplication sourceApplication
- @param completion completion
- @return 处理结果
- */
-- (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           completion:(nullable ICCompletion)completion;
+                         replaceKeyMap:(nullable NSDictionary *)replaceKeyMap DEPRECATED_MSG_ATTRIBUTE("use registerSDKAutoService: instead");
 
 
 /**
  处理支付回调9.0以后
  */
 - (BOOL)handleOpenURL:(NSURL *)url
-           completion:(nullable ICCompletion)completion;
+           completion:(nullable ICCompletion)completion DEPRECATED_MSG_ATTRIBUTE("use handleOpenURL:sourceApplication: instead");
 
+- (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(nullable NSString *)sourceApplication
+           completion:(nullable ICCompletion)completion DEPRECATED_MSG_ATTRIBUTE("use handleOpenURL:sourceApplication: instead");
 
 @end
 
 NS_ASSUME_NONNULL_END
-
-/*
-- (void)payWithCharge:(NSString *)charge
-scheme:(NSString *)scheme
-controller:(UIViewController *)controller
-completion:(ICCompletion)completion;*/

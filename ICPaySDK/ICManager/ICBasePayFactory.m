@@ -19,4 +19,23 @@
    
 }
 
+- (void)setAppKey:(NSString *)appKey {
+}
+
+/**
+ 支付统一规范
+ */
+
+- (void)payWithModel:(id)model
+          controller:(nullable UIViewController *)controller
+          completion:(nullable ICCompletion)completion {
+}
+/**
+ 处理支付
+ */
+- (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(nullable NSString *)sourceApplication {
+    return YES;
+}
+
 @end

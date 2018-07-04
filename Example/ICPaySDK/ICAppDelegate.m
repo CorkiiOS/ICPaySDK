@@ -13,26 +13,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    [[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"微信支付需要的APPID"} messageBlock:^(ICMessageModel *message) {
-        message.cancel = @"取消";
-        //配置回调提示
-    }];
+
+    /*新版*/
     
-    //采用协议方式  即自建模型遵守 ICIAliModel／ICIWxModel／ICIUnionpayModel 可以忽略
-    [[ICPayDesignManager shareInstance] loadAutoParserConfigWithScheme:@"AliPayURLScheme.ic"
-                                                         identifierMap:@{ICWxPayChannelKey : @"weChatPay",
-                                                                         ICALiPayChannelKey : @"alipay",
-                                                                         ICUnionPayChannelKey : @"tn"}
-                                                         replaceKeyMap:@{}];
+    /*pod集成 或者 手动配置好之后*/
     
+    /*注册的方式*/
+    ///方式一：
+    ///如果采用了微信支付，那么在项目info.plist中添加键值对 ICWxPayChannelKey : 微信key
+    ///如果没有微信支付,那么再项目info.plist中添加键值对 ICWxPayChannelKey : 任意字符串
+    ///添加任意字符串是为了提供一个自动注册sdk的标志
     
-    /*
-     [[ICPayDesignManager shareInstance] registerSDKOption:^{
-     //自己注册SDK 做想要的操作
-     } messageBlock:^(ICMessageModel * _Nonnull message) {
-     
-     }];
+    ///方式二：
+    /*    [[ICPayDesignManager shareInstance]
+     registerSDKWithDictionary:@{ICWxPayChannelKey : @"wechat key"}];
      */
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -46,13 +40,14 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return  [[ICPayDesignManager shareInstance] handleOpenURL:url sourceApplication:sourceApplication completion:nil];
+    return [[ICPayDesignManager shareInstance] handleOpenURL:url sourceApplication:sourceApplication];
+    
 }
 
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    return  [[ICPayDesignManager shareInstance] handleOpenURL:url completion:nil];
+    return [[ICPayDesignManager shareInstance] handleOpenURL:url sourceApplication:nil];
 }
 
 

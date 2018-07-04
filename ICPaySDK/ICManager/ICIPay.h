@@ -23,18 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
           controller:(nullable UIViewController *)controller
           completion:(nullable ICCompletion)completion;
 /**
- 处理支付回调9.0
+ 处理支付
  */
 - (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(nullable NSString *)sourceApplication
-           completion:(nullable ICCompletion)completion;
+    sourceApplication:(nullable NSString *)sourceApplication;
 
 
-/**
- 处理支付回调9.0以后
- */
-- (BOOL)handleOpenURL:(NSURL *)url
-           completion:(nullable ICCompletion)completion;
 @end
 
 NS_ASSUME_NONNULL_END

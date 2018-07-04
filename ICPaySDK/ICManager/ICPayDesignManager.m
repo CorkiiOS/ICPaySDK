@@ -17,10 +17,11 @@
 #import "ICIWxModel.h"
 #import "ICIUnionpayModel.h"
 #import "ICError.h"
-
+#import "ICPaySDKAutoServiceProtocol.h"
+#import "ICBasePayFactory.h"
 @interface ICPayDesignManager()
 
-@property (nonatomic, strong) NSDictionary *channelMap;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, ICBasePayFactory *>*channelMap;
 @property (nonatomic, strong) NSDictionary *identifierMap;
 @property (nonatomic, strong) NSMutableDictionary *replaceKeyMap;
 @property (nonatomic, strong) NSString *scheme;
@@ -32,6 +33,10 @@
 
 @implementation ICPayDesignManager
 
++ (void)load {
+    [self performSelectorOnMainThread:@selector(shareInstance) withObject:nil waitUntilDone:NO];
+}
+
 + (instancetype)shareInstance {
     static ICPayDesignManager *manager = nil;
     static dispatch_once_t onceToken;
@@ -42,15 +47,39 @@
     return manager;
 }
 
-- (void)registerSDKWithDictionary:(NSDictionary *)dictionary
-                     messageBlock:(void (^)(ICMessageModel *))messageBlock {
-   
-    [self _registerSDKWithOption:nil dictionary:dictionary messageBlock:messageBlock];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    }
+    return self;
 }
 
-- (void)registerSDKOption:(void (^)())option messageBlock:(void (^)(ICMessageModel *))messageBlock {
+- (void)applicationDidFinishLaunching:(NSNotification *)noti {
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *wxkey = info[ICWxPayChannelKey];
+    if (wxkey) {
+        [self registerSDKWithDictionary:@{ICWxPayChannelKey : wxkey} messageBlock:^(ICMessageModel * _Nonnull message) {
+            message.cancel = @"支付取消";
+            message.success = @"支付成功";
+            message.failure = @"支付失败";
+        }];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark impl
+
+- (void)registerSDKAutoService:(id<ICPaySDKAutoServiceProtocol>)service {
     
-    [self _registerSDKWithOption:option dictionary:nil messageBlock:messageBlock];
+}
+
+- (void)registerSDKWithDictionary:(NSDictionary *)dictionary {
+    [self _registerSDKWithOption:nil dictionary:dictionary messageBlock:nil];
 }
 
 - (void)_registerSDKWithOption:(void (^)())option
@@ -64,37 +93,21 @@
     if (messageBlock) {
         messageBlock(model);
     }
-    NSString *appid = dictionary[ICWxPayChannelKey];
 
-    id aliIns = [NSClassFromString(@"ICAliPayFactory") new];
-    id wxiIns = [NSClassFromString(@"ICWxPayFactory") new];
-    id unionIns = [NSClassFromString(@"ICUnionpayFactory") new];
-
-    self.model = model;
-
-    if (wxiIns) {
-        ((void(*)(id,SEL, id))objc_msgSend)(wxiIns, @selector(setMessage:), model);
-        ((void(*)(id,SEL, id))objc_msgSend)(wxiIns, @selector(setAppId:), appid);
-        [self.channelMap setValue:wxiIns forKey:ICWxPayChannelKey];
-    }
+    ICBasePayFactory *aliPay = [NSClassFromString(@"ICAliPayFactory") new];
+    ICBasePayFactory *wxPay = [NSClassFromString(@"ICWxPayFactory") new];
+    ICBasePayFactory *unionPay = [NSClassFromString(@"ICUnionpayFactory") new];
     
-    if (aliIns) {
-        ((void(*)(id,SEL, id))objc_msgSend)(aliIns, @selector(setMessage:), model);
-        [self.channelMap setValue:aliIns forKey:ICALiPayChannelKey];
-    }
+    aliPay.message = model;
+    wxPay.message = model;
+    unionPay.message = model;
     
-    if (unionIns) {
-        ((void(*)(id,SEL, id))objc_msgSend)(unionIns, @selector(setMessage:), model);
-        [self.channelMap setValue:unionIns forKey:ICUnionPayChannelKey];
-    }
-}
-
-- (void)loadAutoParserConfigWithScheme:(NSString *)scheme
-                         identifierMap:(NSDictionary *)identifierMap
-                         replaceKeyMap:(NSDictionary *)replaceKeyMap {
-    self.identifierMap = identifierMap;
-    self.replaceKeyMap = replaceKeyMap.mutableCopy;
-    self.scheme = scheme;
+    [wxPay setAppKey:dictionary[ICWxPayChannelKey]];
+    
+    self.channelMap[ICALiPayChannelKey] = aliPay;
+    self.channelMap[ICWxPayChannelKey] = wxPay;
+    self.channelMap[ICUnionPayChannelKey] = unionPay;
+    
 }
 
 - (void)payWithModel:(id)model
@@ -148,22 +161,10 @@
            completion:completion];
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           completion:(ICCompletion)completion {
-    
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     id<ICIPay> pay = self.channelMap[self.channel];
     return [pay handleOpenURL:url
-            sourceApplication:sourceApplication
-                   completion:completion];
-}
-
-- (BOOL)handleOpenURL:(NSURL *)url
-           completion:(ICCompletion)completion {
-    
-    return [self handleOpenURL:url
-             sourceApplication:nil
-                    completion:completion];
+            sourceApplication:sourceApplication];
 }
 
 - (id)parserData:(NSDictionary *)data {
@@ -197,41 +198,77 @@
             ((void(*)(id,SEL, id, id))objc_msgSend)(unionIns, @selector(setTn:scheme:), data[unionIdentifier],self.scheme);
         }
         return unionIns;
-
+        
     }
     return nil;
 }
+
+- (void)setGlobalPayCancelText:(NSString *)text {
+    self.channelMap[ICALiPayChannelKey].message.cancel = text;
+    self.channelMap[ICWxPayChannelKey].message.cancel = text;
+    self.channelMap[ICUnionPayChannelKey].message.cancel = text;
+}
+
+- (void)setGlobalPaySuccessText:(NSString *)text {
+    self.channelMap[ICALiPayChannelKey].message.success = text;
+    self.channelMap[ICWxPayChannelKey].message.success = text;
+    self.channelMap[ICUnionPayChannelKey].message.success = text;
+}
+
+- (void)setGlobalPayFailureText:(NSString *)text {
+    self.channelMap[ICALiPayChannelKey].message.failure = text;
+    self.channelMap[ICWxPayChannelKey].message.failure = text;
+    self.channelMap[ICUnionPayChannelKey].message.failure = text;
+}
+
 #pragma mark - getter
 
-- (NSDictionary *)channelMap {
+- (NSMutableDictionary *)channelMap {
     if (_channelMap == nil) {
         _channelMap = [NSMutableDictionary dictionary];
     }
     return _channelMap;
 }
 
+
+
+/**************************************即将废弃***********************************/
+- (void)registerSDKWithDictionary:(NSDictionary *)dictionary
+                     messageBlock:(void (^)(ICMessageModel *))messageBlock {
+    
+    [self _registerSDKWithOption:nil dictionary:dictionary messageBlock:messageBlock];
+}
+
+- (void)registerSDKOption:(void (^)())option messageBlock:(void (^)(ICMessageModel *))messageBlock {
+    
+    [self _registerSDKWithOption:option dictionary:nil messageBlock:messageBlock];
+}
+
+- (void)loadAutoParserConfigWithScheme:(NSString *)scheme
+                         identifierMap:(NSDictionary *)identifierMap
+                         replaceKeyMap:(NSDictionary *)replaceKeyMap {
+    self.identifierMap = identifierMap;
+    self.replaceKeyMap = replaceKeyMap.mutableCopy;
+    self.scheme = scheme;
+}
+
+
+- (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication
+           completion:(ICCompletion)completion {
+    
+    id<ICIPay> pay = self.channelMap[self.channel];
+    return [pay handleOpenURL:url
+            sourceApplication:sourceApplication];
+}
+
+- (BOOL)handleOpenURL:(NSURL *)url
+           completion:(ICCompletion)completion {
+    
+    return [self handleOpenURL:url
+             sourceApplication:nil
+                    completion:completion];
+}
+
 @end
 
-
-/*- (void)payWithCharge:(NSString *)result
- scheme:(NSString *)scheme
- controller:(UIViewController *)controller
- completion:(ICCompletion)completion {
- 
- ICJsonParsing *jsonParse = [[ICJsonParsing alloc] init];
- ICParsingContext *context = [[ICParsingContext alloc] initWithParsing:jsonParse];
- ICPayCharge *payCharge = [context parsing:result];
- self.channel = payCharge.channel;
- id<ICIPay> pay = self.channelMap[payCharge.channel];
- if (pay == nil) {
- if (completion) {
- completion([ICError buildErrWithCode:ICErrorStatusCodeChannelFail]);
- }
- return;
- }
- 
- [pay payWithCharge:payCharge
- scheme:scheme
- controller:controller
- completion:completion];
- }*/

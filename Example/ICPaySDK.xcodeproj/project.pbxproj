@@ -13,6 +13,7 @@
 		04FA91891FF63FD400D4920A /* ICCircleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */; };
 		04FBC6681FE8E9590079711F /* AliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6641FE8E9580079711F /* AliModel.m */; };
 		04FBC6691FE8E9590079711F /* WxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBC6651FE8E9590079711F /* WxModel.m */; };
+		485E620E20ECFD0000FFB253 /* ICPaySDKService.m in Sources */ = {isa = PBXBuildFile; fileRef = 485E620D20ECFD0000FFB253 /* ICPaySDKService.m */; };
 		48F85DB41FF3C74100C67E31 /* UnionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F85DB31FF3C74100C67E31 /* UnionModel.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -56,6 +57,8 @@
 		04FBC6671FE8E9590079711F /* WxModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxModel.h; sourceTree = "<group>"; };
 		1035F6ED96829435722AFC0D /* libPods-ICPaySDK_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ICPaySDK_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		298A64B28146A5605CBB4259 /* ICPaySDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ICPaySDK.podspec; path = ../ICPaySDK.podspec; sourceTree = "<group>"; };
+		485E620C20ECFD0000FFB253 /* ICPaySDKService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICPaySDKService.h; sourceTree = "<group>"; };
+		485E620D20ECFD0000FFB253 /* ICPaySDKService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICPaySDKService.m; sourceTree = "<group>"; };
 		48F85DB21FF3C74100C67E31 /* UnionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnionModel.h; sourceTree = "<group>"; };
 		48F85DB31FF3C74100C67E31 /* UnionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnionModel.m; sourceTree = "<group>"; };
 		4B78A810DF6B70EF614E40F1 /* Pods-ICPaySDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICPaySDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ICPaySDK_Tests/Pods-ICPaySDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				04523E322002FF8700398C33 /* ICPayImp */,
 				6003F59C195388D20070C39A /* ICAppDelegate.h */,
 				6003F59D195388D20070C39A /* ICAppDelegate.m */,
+				485E620C20ECFD0000FFB253 /* ICPaySDKService.h */,
+				485E620D20ECFD0000FFB253 /* ICPaySDKService.m */,
 				04FA91851FF63FD400D4920A /* ICCircleTestViewController.h */,
 				04FA91861FF63FD400D4920A /* ICCircleTestViewController.m */,
 				04FA91871FF63FD400D4920A /* ICCircleTestViewController.xib */,
@@ -453,6 +458,7 @@
 				04FBC6691FE8E9590079711F /* WxModel.m in Sources */,
 				6003F5A7195388D20070C39A /* ICViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				485E620E20ECFD0000FFB253 /* ICPaySDKService.m in Sources */,
 				04523E352002FFC800398C33 /* ICPayUtils.m in Sources */,
 				48F85DB41FF3C74100C67E31 /* UnionModel.m in Sources */,
 			);

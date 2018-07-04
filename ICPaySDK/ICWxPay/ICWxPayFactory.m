@@ -18,10 +18,9 @@
 
 @implementation ICWxPayFactory
 
-- (void)setAppId:(NSString *)appId {
-    _appId = appId;
-    if (appId) {
-        BOOL isSuccess = [WXApi registerApp:appId];
+- (void)setAppKey:(NSString *)appKey {
+    if (appKey) {
+        BOOL isSuccess = [WXApi registerApp:appKey];
         if (isSuccess) {
             ICLog(@"wechatPay sdk register success");
         }else {
@@ -53,19 +52,8 @@
     [WXApi sendReq:request];
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           completion:(ICCompletion)completion {
-    
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     return [WXApi handleOpenURL:url delegate:self];
-}
-
-- (BOOL)handleOpenURL:(NSURL *)url
-           completion:(ICCompletion)completion {
-    
-    return [self handleOpenURL:url
-             sourceApplication:nil
-                    completion:completion];
 }
 
 

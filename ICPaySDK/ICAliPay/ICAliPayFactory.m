@@ -32,23 +32,17 @@
                                 }];
 }
 
+
+/**
+ 处理支付
+ */
 - (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           completion:(ICCompletion)completion {
-    
+    sourceApplication:(nullable NSString *)sourceApplication {
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url
                                               standbyCallback:^(NSDictionary *resultDic) {
-        [self handleResult:resultDic];
-    }];
+                                                  [self handleResult:resultDic];
+                                              }];
     return YES;
-}
-
-- (BOOL)handleOpenURL:(NSURL *)url
-           completion:(ICCompletion)completion {
-    
-    return [self handleOpenURL:url
-             sourceApplication:nil
-                    completion:completion];
 }
 
 /**

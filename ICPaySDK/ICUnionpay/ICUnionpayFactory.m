@@ -40,23 +40,20 @@
     }
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-           completion:(ICCompletion)completion {
-
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
         
         if([code isEqualToString:@"success"]) {
-         
+            
             [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
         }
         else if([code isEqualToString:@"fail"]) {
-       
+            
             [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
         }
         else if([code isEqualToString:@"cancel"]) {
             
-             [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
+            [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
         }
         self.completion = nil;
     }];
@@ -64,11 +61,5 @@
     return YES;
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url
-           completion:(ICCompletion)completion {
-    return [self handleOpenURL:url
-             sourceApplication:nil
-                    completion:completion];
-}
 
 @end

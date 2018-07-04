@@ -1,0 +1,1 @@
+../../../../../ICPaySDK/ICManager/ICPaySDKAutoServiceProtocol.h
