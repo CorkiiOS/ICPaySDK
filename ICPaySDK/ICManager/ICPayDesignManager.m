@@ -58,9 +58,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)noti {
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *wxkey = info[ICWxPayChannelKey];
+    NSString *wxkey = info[@"ICWxPayChannelKey"];
     if (wxkey) {
-        [self registerSDKWithDictionary:@{ICWxPayChannelKey : wxkey} messageBlock:^(ICMessageModel * _Nonnull message) {
+        ICLog(@"info.plist 检测到注册配置");
+        [self _registerSDKWithOption:nil dictionary:@{ICWxPayChannelKey : wxkey} messageBlock:^(ICMessageModel *message) {
             message.cancel = @"支付取消";
             message.success = @"支付成功";
             message.failure = @"支付失败";
@@ -88,7 +89,7 @@
     if (option) {
         option();
     }
-    
+    ICLog(@"ICPaySDK 开始注册**************************");
     ICMessageModel *model = [ICMessageModel new];
     if (messageBlock) {
         messageBlock(model);
@@ -108,6 +109,8 @@
     self.channelMap[ICWxPayChannelKey] = wxPay;
     self.channelMap[ICUnionPayChannelKey] = unionPay;
     
+    ICLog(@"ICPaySDK 注册完成*****************方式  ******%@ *****%@ ****%@",aliPay,wxPay,unionPay);
+
 }
 
 - (void)payWithModel:(id)model

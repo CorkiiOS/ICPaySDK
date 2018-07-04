@@ -84,8 +84,8 @@
     [manager POST:URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable data) {
         
         NSString *tn = [[NSString alloc] initWithData:data encoding:(NSUTF8StringEncoding)];
-//        UnionModel *model = [UnionModel new];
-//        model.tn = tn;
+        UnionModel *model = [UnionModel new];
+        model.tn = tn;
         /*
          经过测试 银联SDK会一直引用 self 再调用一次 银联SDK 支付接口 此处self 才dealloc
          
@@ -93,7 +93,7 @@
          [[UPPaymentControl defaultControl] startPay:unionModel.union_tn fromScheme:unionModel.scheme mode:unionModel.union_tnModel viewController:controller];
          
          */
-        [ICPayUtils _payWithModel:@{@"tn" : tn} controller:controller success:success failure:failure cancel:cancel];
+        [ICPayUtils _payWithModel:model controller:controller success:success failure:failure cancel:cancel];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
