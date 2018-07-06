@@ -54,12 +54,18 @@ end
 * 支付宝<ICIAliModel>(支付宝为例)
 
 ```
-//自定义数据模型 实现协议 <ICIAliModel>
+/*闭包方式*/
+/*自定义数据模型 实现协议 <ICIAliModel>*/
 AliModel *model = [[AliModel alloc] init];
 model.orderString = orderString;
 [[ICPayDesignManager shareInstance] payWithModel:model controller:nil completion:^(ICError *error) {
-//回调
+/*回调*/
 }];
+
+/*代理方式*/
+[[ICPayDesignManager shareInstance] payWithModel:model controller:nil delegate:self];
+/*回调*/
+- (void)payManagerdidCompleteWithError:(ICError *)error {}
 
 ```
 
