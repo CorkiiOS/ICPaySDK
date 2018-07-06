@@ -57,9 +57,7 @@ end
 //自定义数据模型 实现协议 <ICIAliModel>
 AliModel *model = [[AliModel alloc] init];
 model.orderString = orderString;
-[[ICPayDesignManager shareInstance] payWithModel:model
-controller:nil
-completion:^(ICError *error) {
+[[ICPayDesignManager shareInstance] payWithModel:model controller:nil completion:^(ICError *error) {
 //回调
 }];
 
