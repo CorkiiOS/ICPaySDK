@@ -7,15 +7,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ICIAliModel.h"
+#import "ICBaseParamsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface ICAliPayModel : NSObject<ICIAliModel>
+@interface ICAliPayModel : ICBaseParamsModel<ICIAliModel>
 
 @property (nonatomic, strong) NSString *scheme;
 
 @property (nonatomic, strong) NSString *orderString;
-
-- (void)setOrderString:(NSString *)orderString scheme:(NSString *)scheme;
 
 @end
 NS_ASSUME_NONNULL_END

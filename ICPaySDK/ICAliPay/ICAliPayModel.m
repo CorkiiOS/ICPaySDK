@@ -17,9 +17,9 @@
     return _orderString;
 }
 
-- (void)setOrderString:(NSString *)orderString scheme:(NSString *)scheme {
-    self.scheme = scheme;
-    self.orderString = orderString;
+- (void)setData:(NSDictionary *)data service:(id<ICPaySDKAutoServiceProtocol>)service {
+    self.scheme = service.scheme;
+    self.orderString = data[service.aliPrimarykey];
 }
 
 @end

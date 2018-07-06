@@ -19,15 +19,14 @@
 #import "ICError.h"
 #import "ICPaySDKAutoServiceProtocol.h"
 #import "ICBasePayFactory.h"
+#import "ICBaseParamsModel.h"
 @interface ICPayDesignManager()
 
 @property (nonatomic, strong) NSMutableDictionary <NSString *, ICBasePayFactory *>*channelMap;
-@property (nonatomic, strong) NSDictionary *identifierMap;
-@property (nonatomic, strong) NSMutableDictionary *replaceKeyMap;
-@property (nonatomic, strong) NSString *scheme;
-
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic, weak) ICMessageModel *model;
+@property (nonatomic, weak) id<ICPayCompletionProtocol>delegate;
+@property (nonatomic, strong) id<ICPaySDKAutoServiceProtocol>service;
 
 @end
 
@@ -76,7 +75,9 @@
 #pragma mark impl
 
 - (void)registerSDKAutoService:(id<ICPaySDKAutoServiceProtocol>)service {
-    
+    if (service.wxPrimaryKey) {
+        [self _registerSDKWithOption:nil dictionary:@{ICWxPayChannelKey : service.wxPrimaryKey} messageBlock:nil];
+    }
 }
 
 - (void)registerSDKWithDictionary:(NSDictionary *)dictionary {
@@ -116,21 +117,13 @@
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
-    /*
-     支付参数支持json
-     需要一个唯一的标示来代表某种支付方式
-     例如：通过 orderString 判断为支付宝支付
-          通过 partnerId  判断为微信支付
-          通过 tn 判断为银联支付
-     
-     */
     if ([model isKindOfClass:[NSString class]]) {
         NSError *error = nil;
         NSDictionary *data = [NSJSONSerialization JSONObjectWithData:[model dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-        model = [self parserData:data];
+        model = [self modelWithData:data];
         
     }else if ([model isKindOfClass:[NSDictionary class]]) {
-        model = [self parserData:model];
+        model = [self modelWithData:model];
     }else {
         if ([model conformsToProtocol:@protocol(ICIWxModel)]) {
             self.channel = ICWxPayChannelKey;
@@ -159,9 +152,18 @@
         return;
     }
     
-    [pay payWithModel:model
-           controller:controller
-           completion:completion];
+    [pay payWithModel:model controller:controller completion:completion];
+}
+
+- (void)payWithModel:(id)model
+          controller:(nullable UIViewController *)controller
+            delegate:(id<ICPayCompletionProtocol>)delegate {
+    self.delegate = delegate;
+    [self payWithModel:model controller:controller completion:^(ICError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(payManagerdidCompleteWithError:)]) {
+            [self.delegate payManagerdidCompleteWithError:error];
+        }
+    }];
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
@@ -170,38 +172,29 @@
             sourceApplication:sourceApplication];
 }
 
-- (id)parserData:(NSDictionary *)data {
-    if (!self.identifierMap) {
-        return nil;
-    }
-    NSString *aliIdentifier = self.identifierMap[ICALiPayChannelKey];
-    NSString *wxIdentifier = self.identifierMap[ICWxPayChannelKey];
-    NSString *unionIdentifier = self.identifierMap[ICUnionPayChannelKey];
-    
+- (id)modelWithData:(NSDictionary *)data {
+    NSString *aliIdentifier = self.service.aliPrimarykey;
+    NSString *wxIdentifier = self.service.wxPrimaryKey;
+    NSString *unionIdentifier = self.service.uniPrimarykey;
+    NSString *scheme = self.service.scheme;
+
     if ([[data allKeys] containsObject:aliIdentifier]) {
         self.channel = ICALiPayChannelKey;
-        id aliIns = [NSClassFromString(@"ICAliPayModel") new];
-        if (aliIns) {
-            ((void(*)(id,SEL, id, id))objc_msgSend)(aliIns, @selector(setOrderString:scheme:), data[aliIdentifier],self.scheme);
-        }
-        return aliIns;
-        
+        ICBaseParamsModel *ali = [NSClassFromString(@"ICAliPayModel") new];
+        [ali setData:data service:self.service];
+        return ali;
+
     }else if ([[data allKeys] containsObject:wxIdentifier]) {
         self.channel = ICWxPayChannelKey;
-        id wxiIns = [NSClassFromString(@"ICWxPayModel") new];
-        if (wxiIns) {
-            ((void(*)(id,SEL, id, id))objc_msgSend)(wxiIns, @selector(setData:keyMapper:), data[wxIdentifier],self.replaceKeyMap);
-        }
-        return wxiIns;
-        
+        ICBaseParamsModel *wx = [NSClassFromString(@"ICWxPayModel") new];
+        [wx setData:data service:self.service];
+        return wx;
+
     }else if ([[data allKeys] containsObject:unionIdentifier]) {
         self.channel = ICUnionPayChannelKey;
-        id unionIns = [NSClassFromString(@"ICUnionpayModel") new];
-        if (unionIns) {
-            ((void(*)(id,SEL, id, id))objc_msgSend)(unionIns, @selector(setTn:scheme:), data[unionIdentifier],self.scheme);
-        }
-        return unionIns;
-        
+        ICBaseParamsModel *un = [NSClassFromString(@"ICUnionpayModel") new];
+        [un setData:data service:self.service];
+        return un;
     }
     return nil;
 }
@@ -235,6 +228,11 @@
 
 
 
+
+
+
+
+
 /**************************************即将废弃***********************************/
 - (void)registerSDKWithDictionary:(NSDictionary *)dictionary
                      messageBlock:(void (^)(ICMessageModel *))messageBlock {
@@ -247,19 +245,9 @@
     [self _registerSDKWithOption:option dictionary:nil messageBlock:messageBlock];
 }
 
-- (void)loadAutoParserConfigWithScheme:(NSString *)scheme
-                         identifierMap:(NSDictionary *)identifierMap
-                         replaceKeyMap:(NSDictionary *)replaceKeyMap {
-    self.identifierMap = identifierMap;
-    self.replaceKeyMap = replaceKeyMap.mutableCopy;
-    self.scheme = scheme;
-}
-
-
 - (BOOL)handleOpenURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
            completion:(ICCompletion)completion {
-    
     id<ICIPay> pay = self.channelMap[self.channel];
     return [pay handleOpenURL:url
             sourceApplication:sourceApplication];
@@ -267,7 +255,6 @@
 
 - (BOOL)handleOpenURL:(NSURL *)url
            completion:(ICCompletion)completion {
-    
     return [self handleOpenURL:url
              sourceApplication:nil
                     completion:completion];

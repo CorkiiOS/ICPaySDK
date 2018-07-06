@@ -39,32 +39,25 @@
     return _sign;
 }
 
-- (void)setData:(id)data
-      keyMapper:(NSDictionary *)keyMapper {
-    
-    if ([data isKindOfClass:[NSString class]]) {
-        NSError *error = nil;
-        data = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-        if (error) {
-            ICLog(@"微信支付参数解析失败");
-            return;
-        }
+- (void)setData:(NSDictionary *)data service:(id<ICPaySDKAutoServiceProtocol>)service {
+    NSString *partnerId = [service respondsToSelector:@selector(partnerIdKey)]? service.partnerIdKey: @"prepayId";
+    NSString *prepayId = [service respondsToSelector:@selector(prepayIdKey)]? service.prepayIdKey: @"noncestr";
+    NSString *nonceStr = [service respondsToSelector:@selector(nonceStrKey)]? service.nonceStrKey: @"timestamp";
+    NSString *timeStamp = [service respondsToSelector:@selector(timeStampKey)]? service.timeStampKey: @"package";
+    NSString *package = [service respondsToSelector:@selector(packageKey)]? service.packageKey: @"package";
+    NSString *sign = [service respondsToSelector:@selector(signKey)]? service.signKey: @"sign";
+    id pset = data[service.wxPrimaryKey];
+    if ([pset isKindOfClass:[NSDictionary class]]) {
+    }else {
+        pset = data;
     }
     
-    NSString *partnerId = keyMapper[@"partnerId"] ?: @"partnerId";
-    NSString *prepayId = keyMapper[@"prepayId"] ?: @"prepayId";
-    NSString *nonceStr = keyMapper[@"nonceStr"] ?: @"noncestr";
-    NSString *timeStamp = keyMapper[@"timeStamp"] ?: @"timestamp";
-    NSString *package = keyMapper[@"package"] ?: @"package";
-    NSString *sign = keyMapper[@"sign"] ?: @"sign";
-
-    self.partnerId = data[partnerId];
-    self.prepayId = data[prepayId];
-    self.nonceStr = data[nonceStr];
-    self.timeStamp = [data[timeStamp] intValue];
-    self.package = data[package];
-    self.sign = data[sign];
-
+    self.partnerId = pset[partnerId];
+    self.prepayId = pset[prepayId];
+    self.nonceStr = pset[nonceStr];
+    self.timeStamp = [pset[timeStamp] intValue];
+    self.package = pset[package];
+    self.sign = pset[sign];
 }
 
 @end

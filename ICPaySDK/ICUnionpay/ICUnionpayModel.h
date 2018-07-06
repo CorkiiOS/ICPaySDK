@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "ICIUnionpayModel.h"
+#import "ICBaseParamsModel.h"
 
-@interface ICUnionpayModel : NSObject<ICIUnionpayModel>
+@interface ICUnionpayModel : ICBaseParamsModel<ICIUnionpayModel>
 
 @property (nonatomic, strong) NSString *scheme;
 
@@ -16,6 +17,5 @@
 
 @property (nonatomic, strong) NSString *union_tnModel;
 
-- (void)setTn:(NSString *)tn scheme:(NSString *)scheme;
 
 @end

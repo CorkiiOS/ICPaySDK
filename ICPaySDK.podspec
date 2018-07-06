@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ICPaySDK'
-  s.version          = '1.4.0'
+  s.version          = '1.5.0'
   s.summary          = 'ICPaySDK is an unique sdk to pay'
   s.description  = "ICPaySDK = wxpay + alipay. the api is unique"
   s.homepage         = 'https://github.com/CorkiiOS/ICPaySDK'

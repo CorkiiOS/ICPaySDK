@@ -31,4 +31,9 @@
     self.scheme = scheme;
 }
 
+- (void)setData:(NSDictionary *)data service:(id<ICPaySDKAutoServiceProtocol>)service {
+    self.scheme = service.scheme;
+    self.union_tn = data[service.uniPrimarykey];
+}
+
 @end

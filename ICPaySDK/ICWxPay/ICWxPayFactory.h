@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *appId;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

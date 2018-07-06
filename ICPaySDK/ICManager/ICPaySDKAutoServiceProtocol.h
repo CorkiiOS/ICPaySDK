@@ -9,6 +9,29 @@
 
 @protocol ICPaySDKAutoServiceProtocol <NSObject>
 
-- (NSString *)wechatPayKey;
+/**
+ 微信支付的appkey
+ */
+- (NSString *)wechatKey;
+/*支付宝支付的标识*/
+- (NSString *)aliPrimarykey;
+/*银联支付的标识*/
+- (NSString *)uniPrimarykey;
+/*微信支付的标识*/
+- (NSString *)wxPrimaryKey;
+
+/**
+ scheme
+ */
+- (NSString *)scheme;
+
+/*微信支付的参数所对应的key
+*/
+- (NSString *)partnerIdKey;
+- (NSString *)prepayIdKey;
+- (NSString *)nonceStrKey;
+- (NSString *)timeStampKey;
+- (NSString *)packageKey;
+- (NSString *)signKey;
 
 @end

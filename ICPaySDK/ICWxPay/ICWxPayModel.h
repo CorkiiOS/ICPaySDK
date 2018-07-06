@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ICIWxModel.h"
-
-@interface ICWxPayModel : NSObject<ICIWxModel>
+#import "ICBaseParamsModel.h"
+@interface ICWxPayModel : ICBaseParamsModel<ICIWxModel>
 
 @property (nonatomic) NSString *partnerId;
 @property (nonatomic) NSString *prepayId;
@@ -17,6 +17,4 @@
 @property (nonatomic) NSString *package;
 @property (nonatomic) NSString *sign;
 
-- (void)setData:(id)data
-      keyMapper:(NSDictionary *)keyMapper;
 @end

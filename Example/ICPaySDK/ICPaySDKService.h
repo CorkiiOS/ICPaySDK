@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ICPaySDKServiceProtocol.h>
-@interface ICPaySDKService : NSObject<ICPaySDKServiceProtocol>
+
+@interface ICPaySDKService : NSObject
 
 @end
