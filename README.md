@@ -13,7 +13,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'ICPaySDK', '~> 1.5.0'
+pod 'ICPaySDK', '~> 1.5.1'
 
 # pod 'ICPaySDK/ICWxPay'
 # pod 'ICPaySDK/ICAliPay'
