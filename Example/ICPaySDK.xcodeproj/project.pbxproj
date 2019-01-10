@@ -251,7 +251,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				DD0541175425BFC18C87F90C /* [CP] Embed Pods Frameworks */,
 				8DF405FF0B09517B357A7B30 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -271,8 +270,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				A7FF74CF7FE040AF1CD2D2A2 /* [CP] Embed Pods Frameworks */,
-				C6D973EFD74BE272204399B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,7 +292,7 @@
 				ORGANIZATIONNAME = corkiios;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = QPD4V232Y3;
+						DevelopmentTeam = EHL7VLQJ43;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -393,56 +390,11 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ICPaySDK_Example/Pods-ICPaySDK_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A7FF74CF7FE040AF1CD2D2A2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ICPaySDK_Tests/Pods-ICPaySDK_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6D973EFD74BE272204399B8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ICPaySDK_Tests/Pods-ICPaySDK_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD0541175425BFC18C87F90C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ICPaySDK_Example/Pods-ICPaySDK_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -611,7 +563,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = QPD4V232Y3;
+				DEVELOPMENT_TEAM = EHL7VLQJ43;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";
@@ -628,7 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = QPD4V232Y3;
+				DEVELOPMENT_TEAM = EHL7VLQJ43;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";

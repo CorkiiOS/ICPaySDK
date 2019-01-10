@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ICPaySDK'
-  s.version          = '1.5.0'
+  s.version          = '1.5.1'
   s.summary          = 'ICPaySDK is an unique sdk to pay'
   s.description  = "ICPaySDK = wxpay + alipay. the api is unique"
   s.homepage         = 'https://github.com/CorkiiOS/ICPaySDK'
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
     s.subspec 'UnionPay' do |un|
 
     un.dependency 'ICPaySDK/ICPayManager'
-    un.dependency 'UnionPay_SDK_iOS'
+    un.dependency 'UnionPay'
     un.source_files = 'ICPaySDK/ICUnionpay/*.{h,m}'
 
     end
