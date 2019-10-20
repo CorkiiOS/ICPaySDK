@@ -7,13 +7,13 @@
 
 ### 配置
 * 使用Pod一键配置，也可以选择性的使用子模块
-
+* 新版1.5.2适配了微信支付1.8.6 通用链接
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'ICPaySDK', '~> 1.5.1'
+pod 'ICPaySDK', '~> 1.5.2'
 
 # pod 'ICPaySDK/ICWxPay'
 # pod 'ICPaySDK/ICAliPay'
