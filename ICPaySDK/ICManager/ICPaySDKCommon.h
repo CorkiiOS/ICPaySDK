@@ -45,6 +45,8 @@ static NSString *const ICALiPayChannelKey = @"ALiPayChannelKey";
 static NSString *const ICWxPayChannelKey = @"WeChatPayChannelKey";
 
 static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
+/*微信支付配置的通用链接*/
+static NSString *const ICWxPayUniversalLinks = @"ICWxPayUniversalLinks";
 
 #endif
 #endif /* ICPaySDK_h */

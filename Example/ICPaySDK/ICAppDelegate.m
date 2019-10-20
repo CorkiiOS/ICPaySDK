@@ -24,9 +24,13 @@
     ///如果没有微信支付,那么再项目info.plist中添加键值对 ICWxPayChannelKey : 任意字符串
     ///添加任意字符串是为了提供一个自动注册sdk的标志
     
+    //// ---------------- ICWxPayUniversalLinks ----------------
+    //// 通用链接
+    
     ///方式二：
     /*    [[ICPayDesignManager shareInstance]
-     registerSDKWithDictionary:@{ICWxPayChannelKey : @"wechat key"}];
+     registerSDKWithDictionary:@{ICWxPayChannelKey : @"wechat key", ICWxPayUniversalLinks : @""
+     }];
      */
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

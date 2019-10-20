@@ -1,5 +1,5 @@
 # UnionPay
 
-v3.3.11
+v3.3.12
 
 pod 'UnionPay'

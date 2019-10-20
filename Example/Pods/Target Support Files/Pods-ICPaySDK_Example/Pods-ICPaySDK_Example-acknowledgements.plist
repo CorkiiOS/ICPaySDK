@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
+			<string>Copyright (c) 2011-2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -103,7 +103,7 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2017 tencent.com. All rights reserved.
+			<string>Copyright 2019 tencent.com. All rights reserved.
 </string>
 			<key>License</key>
 			<string>Copyright</string>

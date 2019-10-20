@@ -75,8 +75,11 @@
 #pragma mark impl
 
 - (void)registerSDKAutoService:(id<ICPaySDKAutoServiceProtocol>)service {
-    if (service.wxPrimaryKey) {
-        [self _registerSDKWithOption:nil dictionary:@{ICWxPayChannelKey : service.wxPrimaryKey} messageBlock:nil];
+    if (service.wechatKey) {
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[ICWxPayChannelKey] = service.wechatKey;
+        params[ICWxPayUniversalLinks] = service.universalLinks;
+        [self _registerSDKWithOption:nil dictionary:params messageBlock:nil];
     }
 }
 
@@ -104,7 +107,7 @@
     wxPay.message = model;
     unionPay.message = model;
     
-    [wxPay setAppKey:dictionary[ICWxPayChannelKey]];
+    [wxPay setAppKey:dictionary[ICWxPayChannelKey] universalLinks:dictionary[ICWxPayUniversalLinks]];
     
     self.channelMap[ICALiPayChannelKey] = aliPay;
     self.channelMap[ICWxPayChannelKey] = wxPay;

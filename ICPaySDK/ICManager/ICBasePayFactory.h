@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) ICMessageModel *message;
 
-- (void)setAppKey:(NSString *)appKey;
+- (void)setAppKey:(NSString *)appKey universalLinks:(NSString *)universalLinks;
 
 - (void)handleResultWithCode:(ICErrorStatusCode)code completion:(ICCompletion)completion;
 

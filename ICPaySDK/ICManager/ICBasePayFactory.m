@@ -19,7 +19,7 @@
    
 }
 
-- (void)setAppKey:(NSString *)appKey {
+- (void)setAppKey:(NSString *)appKey universalLinks:(NSString *)universalLinks {
 }
 
 /**

@@ -19,6 +19,10 @@
 - (NSString *)uniPrimarykey;
 /*微信支付的标识*/
 - (NSString *)wxPrimaryKey;
+/*Universal Links*/
+- (NSString *)universalLinks;
+
+
 
 /**
  scheme

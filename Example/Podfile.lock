@@ -1,20 +1,20 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AliPay_SDK (3.0.0)
+  - AliPay_SDK (15.6.5)
   - ICPaySDK (1.5.1):
     - ICPaySDK/ICAliPay (= 1.5.1)
     - ICPaySDK/ICPayManager (= 1.5.1)
@@ -30,8 +30,8 @@ PODS:
   - ICPaySDK/UnionPay (1.5.1):
     - ICPaySDK/ICPayManager
     - UnionPay
-  - UnionPay (3.3.11)
-  - WechatOpenSDK (1.8.0)
+  - UnionPay (3.3.12)
+  - WechatOpenSDK (1.8.6)
 
 DEPENDENCIES:
   - AFNetworking
@@ -49,11 +49,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AliPay_SDK: 5926c28409b4a4fa782cbb8222c8b1c0797e3725
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AliPay_SDK: 4f94ac544191588946581809b3ad34d1c3e30a83
   ICPaySDK: 5b5d4c2e7cff712869a6916e2da656f838e69abf
-  UnionPay: f43c02800826cd5e8cb1d4f4274b6d05af314474
-  WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
+  UnionPay: 461d6212a1da94972a1b0db109db4218e31d0cc7
+  WechatOpenSDK: 368ae03b72ee3ea1328c4f11326fbb5d2721d118
 
 PODFILE CHECKSUM: 07874ce38aa6ef86cb27dc1fa6b71fcf34d7e2d4
 

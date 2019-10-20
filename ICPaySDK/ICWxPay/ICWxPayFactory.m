@@ -18,9 +18,14 @@
 
 @implementation ICWxPayFactory
 
-- (void)setAppKey:(NSString *)appKey {
+- (void)setAppKey:(NSString *)appKey universalLinks:(nonnull NSString *)universalLinks {
     if (appKey) {
-        BOOL isSuccess = [WXApi registerApp:appKey];
+        BOOL isSuccess = NO;
+        if ([WXApi respondsToSelector:@selector(registerApp:universalLink:)]) {
+            isSuccess = [WXApi performSelector:@selector(registerApp:universalLink:) withObject:appKey withObject:universalLinks];
+        }else if ([WXApi respondsToSelector:@selector(registerApp:)]) {
+            isSuccess = [WXApi performSelector:@selector(registerApp:) withObject:appKey];
+        }
         if (isSuccess) {
             ICLog(@"wechatPay sdk register success");
         }else {
@@ -49,7 +54,13 @@
     request.nonceStr= [wxModel nonceStr];
     request.timeStamp = [wxModel timeStamp];
     request.sign= [wxModel sign];
-    [WXApi sendReq:request];
+    if ([WXApi respondsToSelector:@selector(sendReq:completion:)]) {
+        [WXApi performSelector:@selector(sendReq:completion:) withObject:request withObject:nil];
+    }else {
+        if ([WXApi respondsToSelector:@selector(sendReq:)]) {
+            [WXApi performSelector:@selector(sendReq:) withObject:request];
+        }
+    }
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
