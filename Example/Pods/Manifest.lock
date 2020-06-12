@@ -1,33 +1,33 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - AliPay_SDK (15.6.5)
-  - ICPaySDK (1.5.2):
-    - ICPaySDK/ICAliPay (= 1.5.2)
-    - ICPaySDK/ICPayManager (= 1.5.2)
-    - ICPaySDK/ICWxPay (= 1.5.2)
-    - ICPaySDK/UnionPay (= 1.5.2)
-  - ICPaySDK/ICAliPay (1.5.2):
+  - ICPaySDK (1.6.0):
+    - ICPaySDK/ICAliPay (= 1.6.0)
+    - ICPaySDK/ICPayManager (= 1.6.0)
+    - ICPaySDK/ICWxPay (= 1.6.0)
+    - ICPaySDK/UnionPay (= 1.6.0)
+  - ICPaySDK/ICAliPay (1.6.0):
     - AliPay_SDK
     - ICPaySDK/ICPayManager
-  - ICPaySDK/ICPayManager (1.5.2)
-  - ICPaySDK/ICWxPay (1.5.2):
+  - ICPaySDK/ICPayManager (1.6.0)
+  - ICPaySDK/ICWxPay (1.6.0):
     - ICPaySDK/ICPayManager
     - WechatOpenSDK
-  - ICPaySDK/UnionPay (1.5.2):
+  - ICPaySDK/UnionPay (1.6.0):
     - ICPaySDK/ICPayManager
     - UnionPay
   - UnionPay (3.3.12)
@@ -39,22 +39,23 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
     - AliPay_SDK
     - UnionPay
     - WechatOpenSDK
+  trunk:
+    - AFNetworking
 
 EXTERNAL SOURCES:
   ICPaySDK:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AliPay_SDK: 4f94ac544191588946581809b3ad34d1c3e30a83
-  ICPaySDK: a811ab60909ef8b2f116173ba08119fbbec895da
+  ICPaySDK: e61910e077feab71b4f72151752a4d89adf69cad
   UnionPay: 461d6212a1da94972a1b0db109db4218e31d0cc7
   WechatOpenSDK: 368ae03b72ee3ea1328c4f11326fbb5d2721d118
 
-PODFILE CHECKSUM: 07874ce38aa6ef86cb27dc1fa6b71fcf34d7e2d4
+PODFILE CHECKSUM: c3712ec4a1291ea9332a92278771e64258a5986d
 
 COCOAPODS: 1.8.4

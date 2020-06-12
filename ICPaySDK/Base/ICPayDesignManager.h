@@ -47,7 +47,7 @@ typedef void(^ICCompletion)(ICErrorStatusCode);
 - (void)registerWx:(NSString *)appid universalLinks:(NSString *)universalLinks;
 
 /**
- 注册SDK
+ 自动解析支付参数时初始化配置
 
  @param service 自动解析支付参数必须遵守的规则，详见ICPaySDKAutoServiceProtocol.h
  */

@@ -8,7 +8,7 @@
 #import "ICUnionpayEntry.h"
 #import "UPPaymentControl.h"
 #import "ICIUnionpayModel.h"
-#import "ICwangzgros.h"
+#import "ICMacros.h"
 
 @interface ICUnionpayEntry()
 

@@ -9,7 +9,7 @@
 #import "ICWxPayEntry.h"
 #import <ICIWxModel.h>
 #import <WXApi.h>
-#import "ICwangzgros.h"
+#import "ICMacros.h"
 
 @interface ICWxPayEntry()<WXApiDelegate>
 

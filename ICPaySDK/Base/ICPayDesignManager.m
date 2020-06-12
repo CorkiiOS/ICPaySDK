@@ -7,7 +7,7 @@
 //
 
 #import "ICPayDesignManager.h"
-#import "ICwangzgros.h"
+#import "ICMacros.h"
 #import "ICIAliModel.h"
 #import "ICIWxModel.h"
 #import "ICIUnionpayModel.h"

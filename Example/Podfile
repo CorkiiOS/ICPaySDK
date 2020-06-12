@@ -4,7 +4,7 @@ target 'ICPaySDK_Example' do
   pod 'ICPaySDK', :path => '../'
   
   pod 'AFNetworking'
-  
+
   target 'ICPaySDK_Tests' do
     inherit! :search_paths
     
