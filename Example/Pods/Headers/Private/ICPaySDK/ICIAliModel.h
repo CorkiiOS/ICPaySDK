@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/ICManager/ICIAliModel.h
+../../../../../ICPaySDK/Base/Protocol/ICIAliModel.h

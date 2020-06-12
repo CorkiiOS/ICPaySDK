@@ -1,1 +1,0 @@
-../../../../AliPay_SDK/AliPay-master/AlipaySDK.framework/Headers/AlipaySDK.h

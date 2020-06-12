@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     s.subspec 'ICPayManager' do |mgr|
 
 
-   mgr.source_files = 'ICPaySDK/ICManager/*.{h,m}'
+   mgr.source_files = 'ICPaySDK/Base/**/*.{h,m}'
 
     end
 

@@ -2,7 +2,7 @@
 //  ICPayUtils.h
 //  ICPaySDK_Example
 //
-//  Created by mac on 2018/1/8.
+//  Created by wangzg on 2018/1/8.
 //  Copyright © 2018年 corkiios. All rights reserved.
 //
 

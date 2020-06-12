@@ -6,7 +6,7 @@
 //
 
 #import "ICWxPayModel.h"
-#import "ICDebugLog.h"
+
 @implementation ICWxPayModel
 
 /** 商家向财付通申请的商家id */

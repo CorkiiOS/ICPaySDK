@@ -2,14 +2,15 @@
 //  ICWxPayEntry.m
 //  ICPayPlusDesign
 //
-//  Created by mac on 2017/7/23.
+//  Created by wangzg on 2017/7/23.
 //  Copyright © 2017年 iCorki. All rights reserved.
 //
 
 #import "ICWxPayEntry.h"
-#import <ICPaySDK/ICDebugLog.h>
 #import <ICIWxModel.h>
 #import <WXApi.h>
+#import "ICwangzgros.h"
+
 @interface ICWxPayEntry()<WXApiDelegate>
 
 @property (nonatomic) ICCompletion completion;
@@ -20,12 +21,7 @@
 
 - (void)setAppKey:(NSString *)appKey universalLinks:(nonnull NSString *)universalLinks {
     if (appKey) {
-        BOOL isSuccess = NO;
-        if ([WXApi respondsToSelector:@selector(registerApp:universalLink:)]) {
-            isSuccess = [WXApi performSelector:@selector(registerApp:universalLink:) withObject:appKey withObject:universalLinks];
-        }else if ([WXApi respondsToSelector:@selector(registerApp:)]) {
-            isSuccess = [WXApi performSelector:@selector(registerApp:) withObject:appKey];
-        }
+        BOOL isSuccess = [WXApi registerApp:appKey universalLink:universalLinks];
         if (isSuccess) {
             ICLog(@"wechatPay sdk register success");
         }else {
@@ -41,8 +37,10 @@
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
     self.completion = completion;
-    if(![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
-        [self handleResultWithCode:ICErrorStatusCodeUnsupported completion:self.completion];
+    if(![WXApi isWXAppInstalled]) {
+        if (self.completion) {
+            self.completion(ICErrorStatusCodeUnsupported);
+        }
         return;
     }
 
@@ -54,19 +52,16 @@
     request.nonceStr= [wxModel nonceStr];
     request.timeStamp = [wxModel timeStamp];
     request.sign= [wxModel sign];
-    if ([WXApi respondsToSelector:@selector(sendReq:completion:)]) {
-        [WXApi performSelector:@selector(sendReq:completion:) withObject:request withObject:nil];
-    }else {
-        if ([WXApi respondsToSelector:@selector(sendReq:)]) {
-            [WXApi performSelector:@selector(sendReq:) withObject:request];
-        }
-    }
+    [WXApi sendReq:request completion:nil];
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     return [WXApi handleOpenURL:url delegate:self];
 }
 
+- (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity {
+    return [WXApi handleOpenUniversalLink:userActivity delegate:self];
+}
 
 /**
  微信支付回调
@@ -82,23 +77,19 @@
 //WXErrCodeUnsupport  = -5,   /**< 微信不支持    */
 
 - (void)onResp:(BaseResp *)resp {
-    
-    if ([resp isKindOfClass:[PayResp class]]) {
-        
+    if ([resp isKindOfClass:[PayResp class]] && self.completion) {
         PayResp *response = (PayResp *)resp;
         switch (response.errCode) {
             case WXSuccess:
-                [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
-
+                self.completion(ICErrorStatusCodeSuccess);
                 break;
                 
             case WXErrCodeUserCancel:
-                [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
-
+                self.completion(ICErrorStatusCodeUserCancel);
                 break;
+                
             default:
-                [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
-
+                self.completion(ICErrorStatusCodeFailure);
                 break;
                 
         }

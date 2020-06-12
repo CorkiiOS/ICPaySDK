@@ -4,7 +4,7 @@
 //  ICPayUtils.m
 //  ICPaySDK_Example
 //
-//  Created by mac on 2018/1/8.
+//  Created by wangzg on 2018/1/8.
 //  Copyright © 2018年 corkiios. All rights reserved.
 //
 
@@ -105,16 +105,14 @@
               success:(nonnull ICPayBlock)success
               failure:(nonnull ICPayBlock)failure
                cancel:(nonnull ICPayBlock)cancel {
-    [[ICPayDesignManager shareInstance] payWithModel:model controller:controller completion:^(ICError *error) {
+    [[ICPayDesignManager shareInstance] payWithModel:model controller:controller completion:^(ICErrorStatusCode status) {
         //成功
-        if (error.status == ICErrorStatusCodeSuccess) {
-            success(error.message);
+        if (status == ICErrorStatusCodeSuccess) {
             
-        }else if (error.status == ICErrorStatusCodeUserCancel) {
-            cancel(error.message);
+        }else if (status == ICErrorStatusCodeUserCancel) {
             
         }else {
-            failure(error.message);
+            
         }
         
     }];

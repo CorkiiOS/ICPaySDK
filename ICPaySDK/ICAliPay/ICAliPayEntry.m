@@ -2,13 +2,13 @@
 //  ICAliPayEntry.m
 //  ICPayPlusDesign
 //
-//  Created by mac on 2017/7/23.
+//  Created by wangzg on 2017/7/23.
 //  Copyright © 2017年 iCorki. All rights reserved.
 //
 
 #import "ICAliPayEntry.h"
 #import <AlipaySDK/AlipaySDK.h>
-#import "ICAssert.h"
+#import "ICPayDesignManager.h"
 #import "ICIAliModel.h"
 
 @interface ICAliPayEntry()
@@ -51,13 +51,17 @@
  @param result 结果集
  */
 - (void)handleResult:(NSDictionary *)result {
+    if (!self.completion) {
+        return;
+    }
+    
     NSInteger code = [result[@"resultStatus"] integerValue];
     if (code == 9000) {
-        [self handleResultWithCode:ICErrorStatusCodeSuccess completion:self.completion];
+        self.completion(ICErrorStatusCodeSuccess);
     }else if (code == 6001) {
-        [self handleResultWithCode:ICErrorStatusCodeUserCancel completion:self.completion];
+        self.completion(ICErrorStatusCodeUserCancel);
     }else {
-        [self handleResultWithCode:ICErrorStatusCodeFailure completion:self.completion];
+        self.completion(ICErrorStatusCodeFailure);
     }
 
     self.completion = nil;

@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/ICManager/ICPayDesignManager.h
+../../../../../ICPaySDK/Base/ICPayDesignManager.h

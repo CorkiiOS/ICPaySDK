@@ -98,7 +98,7 @@
 @property (nonatomic, strong) dispatch_queue_t synchronizationQueue;
 @property (nonatomic, strong) dispatch_queue_t responseQueue;
 
-@property (nonatomic, assign) NSInteger maximumActiveDownloads;
+@property (nonatomic, assign) NSInteger maximuwangzgtiveDownloads;
 @property (nonatomic, assign) NSInteger activeRequestCount;
 
 @property (nonatomic, strong) NSMutableArray *queuedMergedTasks;
@@ -152,19 +152,19 @@
 
     return [self initWithSessionManager:sessionManager
                  downloadPrioritization:AFImageDownloadPrioritizationFIFO
-                 maximumActiveDownloads:4
+                 maximuwangzgtiveDownloads:4
                              imageCache:[[AFAutoPurgingImageCache alloc] init]];
 }
 
 - (instancetype)initWithSessionManager:(AFHTTPSessionManager *)sessionManager
                 downloadPrioritization:(AFImageDownloadPrioritization)downloadPrioritization
-                maximumActiveDownloads:(NSInteger)maximumActiveDownloads
+                maximuwangzgtiveDownloads:(NSInteger)maximuwangzgtiveDownloads
                             imageCache:(id <AFImageRequestCache>)imageCache {
     if (self = [super init]) {
         self.sessionManager = sessionManager;
 
         self.downloadPrioritizaton = downloadPrioritization;
-        self.maximumActiveDownloads = maximumActiveDownloads;
+        self.maximuwangzgtiveDownloads = maximuwangzgtiveDownloads;
         self.imageCache = imageCache;
 
         self.queuedMergedTasks = [[NSMutableArray alloc] init];
@@ -401,7 +401,7 @@
 }
 
 - (BOOL)isActiveRequestCountBelowMaximumLimit {
-    return self.activeRequestCount < self.maximumActiveDownloads;
+    return self.activeRequestCount < self.maximuwangzgtiveDownloads;
 }
 
 @end

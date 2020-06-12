@@ -107,14 +107,14 @@ typedef NS_ENUM(NSInteger, AFImageDownloadPrioritization) {
 
  @param sessionManager The session manager to use to download images.
  @param downloadPrioritization The download prioritization of the download queue.
- @param maximumActiveDownloads  The maximum number of active downloads allowed at any given time. Recommend `4`.
+ @param maximuwangzgtiveDownloads  The maximum number of active downloads allowed at any given time. Recommend `4`.
  @param imageCache The image cache used to store all downloaded images in.
 
  @return The new `AFImageDownloader` instance.
  */
 - (instancetype)initWithSessionManager:(AFHTTPSessionManager *)sessionManager
                 downloadPrioritization:(AFImageDownloadPrioritization)downloadPrioritization
-                maximumActiveDownloads:(NSInteger)maximumActiveDownloads
+                maximuwangzgtiveDownloads:(NSInteger)maximuwangzgtiveDownloads
                             imageCache:(nullable id <AFImageRequestCache>)imageCache;
 
 /**

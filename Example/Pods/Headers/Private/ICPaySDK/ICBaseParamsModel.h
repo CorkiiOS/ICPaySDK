@@ -1,1 +1,1 @@
-../../../../../ICPaySDK/ICManager/ICBaseParamsModel.h
+../../../../../ICPaySDK/Base/ICBaseParamsModel.h

@@ -1,6 +1,6 @@
 {
   "name": "ICPaySDK",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "summary": "ICPaySDK is an unique sdk to pay",
   "description": "ICPaySDK = wxpay + alipay. the api is unique",
   "homepage": "https://github.com/CorkiiOS/ICPaySDK",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/CorkiiOS/ICPaySDK.git",
-    "tag": "1.5.1"
+    "tag": "1.5.2"
   },
   "requires_arc": true,
   "platforms": {
@@ -22,7 +22,7 @@
   "subspecs": [
     {
       "name": "ICPayManager",
-      "source_files": "ICPaySDK/ICManager/*.{h,m}"
+      "source_files": "ICPaySDK/Base/**/*.{h,m}"
     },
     {
       "name": "ICAliPay",

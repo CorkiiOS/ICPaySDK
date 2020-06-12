@@ -1,1 +1,0 @@
-../../../../../ICPaySDK/ICAliPay/ICAliPayFactory.h
