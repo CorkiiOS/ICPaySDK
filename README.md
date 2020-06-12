@@ -7,13 +7,12 @@
 
 ### 配置
 * 使用Pod一键配置，也可以选择性的使用子模块
-* 新版1.5.2适配了微信支付1.8.6 通用链接
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'ICPaySDK', '~> 1.5.2'
+pod 'ICPaySDK'
 
 # pod 'ICPaySDK/ICWxPay'
 # pod 'ICPaySDK/ICAliPay'
@@ -27,11 +26,10 @@ end
 
 
 ### 初始化SDK
-* 方式一：可采用在项目info.plist中添加`ICWxPayChannelKey`，对用的值为`微信支付的appkey`，如果没有微信支付可以任意填写，之后会自动初始化SDK
-* 方式二:
 
 ```
-[[ICPayDesignManager shareInstance] registerSDKWithDictionary:@{ICWxPayChannelKey : @"wechat key"}];
+// 使用微信支付需要
+[[ICPayDesignManager shareInstance] registerWx:@"" universalLinks:@""];
 
 ```
 
@@ -47,6 +45,12 @@ end
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
     return [[ICPayDesignManager shareInstance] handleOpenURL:url sourceApplication:nil];
 }
+
+// 微信支付通用链接
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    return [[ICPayDesignManager shareInstance] handleOpenUniversalLink:userActivity];
+}
+
 ```
 
 ### 实现支付

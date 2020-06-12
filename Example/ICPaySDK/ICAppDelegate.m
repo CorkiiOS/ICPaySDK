@@ -28,10 +28,11 @@
     //// 通用链接
     
     ///方式二：
-    /*    [[ICPayDesignManager shareInstance]
-     registerSDKWithDictionary:@{ICWxPayChannelKey : @"wechat key", ICWxPayUniversalLinks : @""
+    /*
      }];
      */
+    
+    [[ICPayDesignManager shareInstance] registerWx:@"" universalLinks:@""];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ICCircleTestViewController new]];
@@ -52,6 +53,10 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
     return [[ICPayDesignManager shareInstance] handleOpenURL:url sourceApplication:nil];
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    return [[ICPayDesignManager shareInstance] handleOpenUniversalLink:userActivity];
 }
 
 
