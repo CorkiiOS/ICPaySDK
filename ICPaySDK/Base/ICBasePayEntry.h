@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ICPayDesignManager.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ICBasePayEntry : NSObject
 
 - (void)setAppKey:(NSString *)appKey universalLinks:(NSString *)universalLinks;
@@ -32,4 +34,6 @@
 - (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity;
 
 @end
+
+NS_ASSUME_NONNULL_END
 

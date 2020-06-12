@@ -140,7 +140,6 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
     NSString *aliIdentifier = self.service.aliPrimarykey;
     NSString *wxIdentifier = self.service.wxPrimaryKey;
     NSString *unionIdentifier = self.service.uniPrimarykey;
-    NSString *scheme = self.service.scheme;
 
     if ([[data allKeys] containsObject:aliIdentifier]) {
         self.channel = ICALiPayChannelKey;

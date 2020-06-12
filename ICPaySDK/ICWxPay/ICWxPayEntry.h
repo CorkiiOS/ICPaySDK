@@ -11,9 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ICWxPayEntry : ICBasePayEntry
 
-@property (nonatomic, strong) NSString *appId;
-
-
 @end
 
 NS_ASSUME_NONNULL_END

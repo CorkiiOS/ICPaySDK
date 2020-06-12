@@ -28,14 +28,11 @@ typedef NS_ENUM(NSInteger, ICErrorStatusCode) {
     ICErrorStatusCodeChannelFail
 };
 
-/**
- 支付完成回调
- 
- @param error 错误信息对象
- */
 typedef void(^ICCompletion)(ICErrorStatusCode);
 
 @protocol ICPaySDKAutoServiceProtocol, ICPayCompletionProtocol;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface ICPayDesignManager : NSObject
 
@@ -82,10 +79,13 @@ typedef void(^ICCompletion)(ICErrorStatusCode);
 
 @end
 
-
 @protocol ICPayCompletionProtocol<NSObject>
 
 @optional
 - (void)payManagerdidCompleteWithError:(ICErrorStatusCode)error;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+
