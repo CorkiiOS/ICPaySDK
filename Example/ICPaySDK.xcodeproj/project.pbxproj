@@ -292,7 +292,7 @@
 				ORGANIZATIONNAME = corkiios;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = EHL7VLQJ43;
+						DevelopmentTeam = DNQ2KWVNKT;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -304,6 +304,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -563,7 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = EHL7VLQJ43;
+				DEVELOPMENT_TEAM = DNQ2KWVNKT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";
@@ -580,7 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = EHL7VLQJ43;
+				DEVELOPMENT_TEAM = DNQ2KWVNKT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ICPaySDK/ICPaySDK-Prefix.pch";
 				INFOPLIST_FILE = "ICPaySDK/ICPaySDK-Info.plist";

@@ -18,11 +18,11 @@
 #import "ICIUnionpayModel.h"
 #import "ICError.h"
 #import "ICPaySDKAutoServiceProtocol.h"
-#import "ICBasePayFactory.h"
+#import "ICBasePayEntry.h"
 #import "ICBaseParamsModel.h"
 @interface ICPayDesignManager()
 
-@property (nonatomic, strong) NSMutableDictionary <NSString *, ICBasePayFactory *>*channelMap;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, ICBasePayEntry *>*channelMap;
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic, weak) ICMessageModel *model;
 @property (nonatomic, weak) id<ICPayCompletionProtocol>delegate;
@@ -99,9 +99,9 @@
         messageBlock(model);
     }
 
-    ICBasePayFactory *aliPay = [NSClassFromString(@"ICAliPayFactory") new];
-    ICBasePayFactory *wxPay = [NSClassFromString(@"ICWxPayFactory") new];
-    ICBasePayFactory *unionPay = [NSClassFromString(@"ICUnionpayFactory") new];
+    ICBasePayEntry *aliPay = [NSClassFromString(@"ICAliPayEntry") new];
+    ICBasePayEntry *wxPay = [NSClassFromString(@"ICWxPayEntry") new];
+    ICBasePayEntry *unionPay = [NSClassFromString(@"ICUnionpayEntry") new];
     
     aliPay.message = model;
     wxPay.message = model;

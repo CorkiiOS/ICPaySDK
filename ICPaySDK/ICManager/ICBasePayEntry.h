@@ -1,5 +1,5 @@
 //
-//  ICBasePayFactory.h
+//  ICBasePayEntry.h
 //  ICPayPlusDesign
 //
 //  Created by mac on 2017/12/19.
@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class ICMessageModel;
 
-@interface ICBasePayFactory : NSObject<ICIPay>
+@interface ICBasePayEntry : NSObject<ICIPay>
 
 @property (nonatomic, strong, nullable) ICMessageModel *message;
 

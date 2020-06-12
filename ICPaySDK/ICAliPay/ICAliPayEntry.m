@@ -1,23 +1,23 @@
 //
-//  ICAliPayFactory.m
+//  ICAliPayEntry.m
 //  ICPayPlusDesign
 //
 //  Created by mac on 2017/7/23.
 //  Copyright © 2017年 iCorki. All rights reserved.
 //
 
-#import "ICAliPayFactory.h"
+#import "ICAliPayEntry.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "ICAssert.h"
 #import "ICIAliModel.h"
 
-@interface ICAliPayFactory()
+@interface ICAliPayEntry()
 
 @property (nonatomic) ICCompletion completion;
 
 @end
 
-@implementation ICAliPayFactory
+@implementation ICAliPayEntry
 
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller

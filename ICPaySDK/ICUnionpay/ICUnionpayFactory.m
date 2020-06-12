@@ -1,23 +1,23 @@
 //
-//  ICUnionpayFactory.m
+//  ICUnionpayEntry.m
 //  ICPaySDK
 //
 //  Created by iCorki on 2017/12/27.
 //
 
-#import "ICUnionpayFactory.h"
+#import "ICUnionpayEntry.h"
 #import "UPPaymentControl.h"
 #import "ICIUnionpayModel.h"
 #import "ICDebugLog.h"
 #import "ICAssert.h"
 
-@interface ICUnionpayFactory()
+@interface ICUnionpayEntry()
 
 @property (nonatomic) ICCompletion completion;
 
 @end
 
-@implementation ICUnionpayFactory
+@implementation ICUnionpayEntry
 
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller

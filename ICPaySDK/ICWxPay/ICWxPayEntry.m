@@ -1,22 +1,22 @@
 //
-//  ICWxPayFactory.m
+//  ICWxPayEntry.m
 //  ICPayPlusDesign
 //
 //  Created by mac on 2017/7/23.
 //  Copyright © 2017年 iCorki. All rights reserved.
 //
 
-#import "ICWxPayFactory.h"
+#import "ICWxPayEntry.h"
 #import <ICPaySDK/ICDebugLog.h>
 #import <ICIWxModel.h>
 #import <WXApi.h>
-@interface ICWxPayFactory()<WXApiDelegate>
+@interface ICWxPayEntry()<WXApiDelegate>
 
 @property (nonatomic) ICCompletion completion;
 
 @end
 
-@implementation ICWxPayFactory
+@implementation ICWxPayEntry
 
 - (void)setAppKey:(NSString *)appKey universalLinks:(nonnull NSString *)universalLinks {
     if (appKey) {

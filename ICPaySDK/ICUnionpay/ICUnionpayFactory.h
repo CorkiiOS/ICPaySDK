@@ -1,11 +1,11 @@
 //
-//  ICUnionpayFactory.h
+//  ICUnionpayEntry.h
 //  ICPaySDK
 //
 //  Created by iCorki on 2017/12/27.
 //
 
-#import "ICBasePayFactory.h"
-@interface ICUnionpayFactory : ICBasePayFactory
+#import "ICBasePayEntry.h"
+@interface ICUnionpayEntry : ICBasePayEntry
 
 @end
