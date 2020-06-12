@@ -121,7 +121,7 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
 
 - (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity {
     ICBasePayEntry *entry = self.channelMap[self.channel];
-    [entry handleOpenUniversalLink:userActivity];
+    return [entry handleOpenUniversalLink:userActivity];
 }
 
 #pragma mark - private
