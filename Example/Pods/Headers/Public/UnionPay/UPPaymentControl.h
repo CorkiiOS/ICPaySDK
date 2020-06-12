@@ -1,1 +1,0 @@
-../../../UnionPay/SDK/UPPaymentControl.h
