@@ -7,6 +7,6 @@
 
 #import "ICPaySDKAutoServiceProtocol.h"
 #import "ICPayDesignManager.h"
-#import "ICIUnionpayModel.h"
+#import "ICBasePayEntry.h"
 #import "ICIWxModel.h"
 #import "ICIAliModel.h"

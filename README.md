@@ -16,13 +16,10 @@ pod 'ICPaySDK'
 
 # pod 'ICPaySDK/ICWxPay'
 # pod 'ICPaySDK/ICAliPay'
-# pod 'ICPaySDK/UnionPay'
 
 end
 
 ```
-
-* 相对繁琐一些，需要配置支付厂家的SDK
 
 
 ### 初始化SDK
@@ -70,6 +67,37 @@ model.orderString = orderString;
 [[ICPayDesignManager shareInstance] payWithModel:model controller:nil delegate:self];
 /*回调*/
 - (void)payManagerdidCompleteWithError:(ICError *)error {}
+
+```
+
+### 自定义支付对象
+
+```
+1. 新建类 继承ICBasePayEntry，实现父类方法， 可以参考 ICAliPayEntry/ICWxPayEntry
+
+
+ 支付统一规范
+ */
+
+- (void)payWithModel:(id)model
+          controller:(nullable UIViewController *)controller
+          completion:(nullable ICCompletion)completion;
+/**
+ 处理支付
+ */
+- (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(nullable NSString *)sourceApplication;
+
+/**
+ 处理通用链接
+ */
+- (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity;
+
+2. 添加 支付对象
+[[ICPayDesignManager shareInstance] addPayEntry:@"自定义的entry"];
+
+3. 发起支付
+[[ICPayDesignManager shareInstance] payWithEntryClass:<#(nonnull Class)#> data:<#(nonnull id)#> controller:<#(nonnull UIViewController *)#> completion:<#^(ICErrorStatusCode)completion#>]
 
 ```
 

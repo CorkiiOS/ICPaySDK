@@ -10,14 +10,12 @@
 #import "ICMacros.h"
 #import "ICIAliModel.h"
 #import "ICIWxModel.h"
-#import "ICIUnionpayModel.h"
 #import "ICPaySDKAutoServiceProtocol.h"
 #import "ICBasePayEntry.h"
 #import "ICBaseParamsModel.h"
 
-static NSString *const ICALiPayChannelKey = @"ALiPayChannelKey";
-static NSString *const ICWxPayChannelKey = @"WeChatPayChannelKey";
-static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
+static NSString *const ICALiPayChannelKey = @"ICAliPayEntry";
+static NSString *const ICWxPayChannelKey = @"ICWxPayEntry";
 
 @interface ICPayDesignManager()
 
@@ -61,6 +59,26 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
     [self.channelMap[ICWxPayChannelKey] setAppKey:appid universalLinks:universalLinks];
 }
 
+- (void)addPayEntry:(ICBasePayEntry *)enrty {
+    self.channelMap[NSStringFromClass([enrty class])] = enrty;
+}
+
+- (void)payWithEntryClass:(Class)cls
+                    data:(id)data
+               controller:(UIViewController *)controller
+               completion:(ICCompletion)completion {
+    self.channel = NSStringFromClass(cls);
+    ICBasePayEntry *entry = self.channelMap[self.channel];
+       if (entry == nil) {
+           if (completion) {
+               completion(ICErrorStatusCodeChannelFail);
+               ICLog(@"创建支付对象失败！！");
+           }
+           return;
+       }
+    [entry payWithModel:data controller:controller completion:completion];
+}
+
 - (void)payWithModel:(id)model
           controller:(UIViewController *)controller
           completion:(ICCompletion)completion {
@@ -78,10 +96,6 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
         
         if ([model conformsToProtocol:@protocol(ICIAliModel)]) {
             self.channel = ICALiPayChannelKey;
-        }
-        
-        if ([model conformsToProtocol:@protocol(ICIUnionpayModel)]) {
-            self.channel = ICUnionPayChannelKey;
         }
     }
     
@@ -101,6 +115,7 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
     
     [entry payWithModel:model controller:controller completion:completion];
 }
+
 
 - (void)payWithModel:(id)model
           controller:(nullable UIViewController *)controller
@@ -129,11 +144,9 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
     ICLog(@"ICPaySDK 创建Entry**************************");
     ICBasePayEntry *aliPay = [NSClassFromString(@"ICAliPayEntry") new];
     ICBasePayEntry *wxPay = [NSClassFromString(@"ICWxPayEntry") new];
-    ICBasePayEntry *unionPay = [NSClassFromString(@"ICUnionpayEntry") new];
     
     self.channelMap[ICALiPayChannelKey] = aliPay;
     self.channelMap[ICWxPayChannelKey] = wxPay;
-    self.channelMap[ICUnionPayChannelKey] = unionPay;
 }
 
 - (id)modelWithData:(NSDictionary *)data {
@@ -153,11 +166,6 @@ static NSString *const ICUnionPayChannelKey = @"ICUnionPayChannelKey";
         [wx setData:data service:self.service];
         return wx;
 
-    }else if ([[data allKeys] containsObject:unionIdentifier]) {
-        self.channel = ICUnionPayChannelKey;
-        ICBaseParamsModel *un = [NSClassFromString(@"ICUnionpayModel") new];
-        [un setData:data service:self.service];
-        return un;
     }
     return nil;
 }

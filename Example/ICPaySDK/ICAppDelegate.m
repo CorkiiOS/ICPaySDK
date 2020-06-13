@@ -14,32 +14,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    /*新版*/
-    
-    /*pod集成 或者 手动配置好之后*/
-    
-    /*注册的方式*/
-    ///方式一：
-    ///如果采用了微信支付，那么在项目info.plist中添加键值对 ICWxPayChannelKey : 微信key
-    ///如果没有微信支付,那么再项目info.plist中添加键值对 ICWxPayChannelKey : 任意字符串
-    ///添加任意字符串是为了提供一个自动注册sdk的标志
-    
-    //// ---------------- ICWxPayUniversalLinks ----------------
-    //// 通用链接
-    
-    ///方式二：
-    /*
-     }];
-     */
-    
+    // 如果使用了微信支付 需要注册
     [[ICPayDesignManager shareInstance] registerWx:@"" universalLinks:@""];
+    
+    // 使用的时候 在项目里最好自己做一层封装 如果后续有变动 迁移成本低
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ICCircleTestViewController new]];
     [self.window makeKeyAndVisible];
+    
+    // 自定义支付对象
+    //[[ICPayDesignManager shareInstance] addPayEntry:<#(nonnull ICBasePayEntry *)#>];
+    
     return YES;
 }
 
+
+
+/*-------------以下为处理回调------------*/
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication

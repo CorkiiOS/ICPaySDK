@@ -13,7 +13,6 @@
 #import <ICPaySDK.h>
 #import "AliModel.h"
 #import "WxModel.h"
-#import "UnionModel.h"
 
 
 

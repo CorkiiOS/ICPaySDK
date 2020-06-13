@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, ICErrorStatusCode) {
 
 typedef void(^ICCompletion)(ICErrorStatusCode);
 
+@class ICBasePayEntry;
 @protocol ICPaySDKAutoServiceProtocol, ICPayCompletionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -50,6 +51,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)registerSDKAutoService:(id<ICPaySDKAutoServiceProtocol>)service;
 
+/*
+ 添加自定义支付对象
+ */
+- (void)addPayEntry:(ICBasePayEntry *)enrty;
+
+
+/*
+ 使用自定义的支付方式支付
+ */
+- (void)payWithEntryClass:(Class)cls
+                     data:(id)data
+               controller:(UIViewController *)controller
+               completion:(ICCompletion)completion;
+
 /**
  支付统一API
  
@@ -64,7 +79,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)payWithModel:(id)model
           controller:(nullable UIViewController *)controller
             delegate:(id<ICPayCompletionProtocol>)delegate;
-
 
 /**
  支付回调 9.0前后统一调用此方法

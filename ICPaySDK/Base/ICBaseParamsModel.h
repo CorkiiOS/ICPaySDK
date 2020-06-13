@@ -10,7 +10,6 @@
 
 @interface ICBaseParamsModel : NSObject
 
-
 - (void)setData:(NSDictionary *)data service:(id<ICPaySDKAutoServiceProtocol>)service;
 
 @end
