@@ -1,5 +1,6 @@
 # 说明
 * 暂时支持支付宝/微信支付，如果需要其他支付方式可以【自定义支付对象】
+
 # ICPaySDK
 
 [![CI Status](http://img.shields.io/travis/corkiios/ICPaySDK.svg?style=flat)](https://travis-ci.org/corkiios/ICPaySDK)
@@ -8,6 +9,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/ICPaySDK.svg?style=flat)](http://cocoapods.org/pods/ICPaySDK)
 
 ### 配置
+* 最新版本为 2.1.0
 * 使用Pod一键配置，也可以选择性的使用子模块
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
