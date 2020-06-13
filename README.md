@@ -1,3 +1,5 @@
+# 说明
+* 暂时支持支付宝/微信支付，如果需要其他支付方式可以【自定义支付对象】
 # ICPaySDK
 
 [![CI Status](http://img.shields.io/travis/corkiios/ICPaySDK.svg?style=flat)](https://travis-ci.org/corkiios/ICPaySDK)
