@@ -152,7 +152,6 @@ static NSString *const ICWxPayChannelKey = @"ICWxPayEntry";
 - (id)modelWithData:(NSDictionary *)data {
     NSString *aliIdentifier = self.service.aliPrimarykey;
     NSString *wxIdentifier = self.service.wxPrimaryKey;
-    NSString *unionIdentifier = self.service.uniPrimarykey;
 
     if ([[data allKeys] containsObject:aliIdentifier]) {
         self.channel = ICALiPayChannelKey;
