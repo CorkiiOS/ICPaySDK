@@ -9,7 +9,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/ICPaySDK.svg?style=flat)](http://cocoapods.org/pods/ICPaySDK)
 
 ### 配置
-* 最新版本为 2.1.0
+* 最新版本为 2.1.1
 * 使用Pod一键配置，也可以选择性的使用子模块
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
